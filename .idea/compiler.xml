@@ -16,6 +16,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="filter-service" options="-parameters" />
       <module name="inventory-service" options="-parameters" />
+      <module name="rental-service" options="-parameters" />
     </option>
   </component>
 </project>
