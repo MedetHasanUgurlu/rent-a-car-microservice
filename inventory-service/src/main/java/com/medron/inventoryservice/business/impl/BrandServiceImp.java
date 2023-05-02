@@ -1,8 +1,67 @@
 package com.medron.inventoryservice.business.impl;
 
 import com.medron.inventoryservice.business.BrandService;
+import com.medron.inventoryservice.business.dto.abstracts.BrandRequest;
+import com.medron.inventoryservice.business.dto.request.create.BrandCreateRequest;
+import com.medron.inventoryservice.business.dto.request.update.BrandUpdateRequest;
+import com.medron.inventoryservice.business.dto.response.get.BrandGetResponse;
+import com.medron.inventoryservice.business.dto.response.getall.BrandGetAllResponse;
+import com.medron.inventoryservice.business.rule.BrandBusinessRule;
+import com.medron.inventoryservice.entity.Brand;
+import com.medron.inventoryservice.repository.BrandRepository;
+import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.UUID;
+
 @Service
+@RequiredArgsConstructor
 public class BrandServiceImp implements BrandService {
+    private final BrandRepository repository;
+    private final BrandBusinessRule rules;
+    private final ModelMapper modelMapper;
+
+    Brand requestToEntity(BrandRequest request){
+        return modelMapper.map(request,Brand.class);
+    }
+    BrandGetResponse entityToGetResponse(Brand brand){
+        return modelMapper.map(brand,BrandGetResponse.class);
+    }
+    BrandGetAllResponse entityToGetAllResponse(Brand brand){
+        return modelMapper.map(brand,BrandGetAllResponse.class);
+    }
+
+    @Override
+    public void add(BrandCreateRequest request) {
+        rules.checkNameExist(request.getName());
+        Brand brand = requestToEntity(request);
+        repository.save(brand);
+    }
+
+    @Override
+    public List<BrandGetAllResponse> getAll() {
+        return repository.findAll().stream().map(this::entityToGetAllResponse).toList();
+    }
+
+    @Override
+    public BrandGetResponse get(UUID id) {
+        rules.checkEntityExist(id);
+        return entityToGetResponse(repository.findById(id).orElseThrow());
+    }
+
+    @Override
+    public void update(UUID id,BrandUpdateRequest request) {
+        rules.checkEntityExist(id);
+        Brand brand = requestToEntity(request);
+        brand.setId(id);
+        repository.save(brand);
+    }
+
+    @Override
+    public void delete(UUID id) {
+        rules.checkEntityExist(id);
+        repository.deleteById(id);
+    }
 }

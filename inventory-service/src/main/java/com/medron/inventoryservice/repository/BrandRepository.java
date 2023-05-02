@@ -7,4 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 @Repository
 public interface BrandRepository extends JpaRepository<Brand, UUID> {
+    boolean existsById(UUID id);
+    boolean existsByNameIgnoreCase(String name);
+
 }
