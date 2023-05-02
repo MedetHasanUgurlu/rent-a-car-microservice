@@ -10,11 +10,13 @@
         <module name="filter-service" />
         <module name="rental-service" />
         <module name="inventory-service" />
+        <module name="common-package" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="common-package" options="-parameters" />
       <module name="filter-service" options="-parameters" />
       <module name="inventory-service" options="-parameters" />
       <module name="rental-service" options="-parameters" />
