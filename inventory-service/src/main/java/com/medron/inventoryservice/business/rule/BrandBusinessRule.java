@@ -12,10 +12,9 @@ public class BrandBusinessRule {
     private final BrandRepository repository;
 
     public void checkNameExist(String name){
-        if (!repository.existsByNameIgnoreCase(name)) {
+        if (repository.existsByNameIgnoreCase(name)) {
             throw new IllegalArgumentException("Brand name already used.");
         }
-
     }
     public void checkEntityExist(UUID id){
         if(!repository.existsById(id)){
