@@ -43,8 +43,9 @@ public class ModelControllerImp implements ModelController {
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<ModelGetResponse> get(@PathVariable UUID id) {
-        return new ResponseEntity<>(service.get(id),HttpStatus.OK);
+    @ResponseStatus(HttpStatus.OK)
+    public ModelGetResponse get(@PathVariable UUID id) {
+        return service.get(id);
     }
 
     @Override

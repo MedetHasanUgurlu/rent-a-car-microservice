@@ -16,5 +16,10 @@
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="netflix-candidates" />
+      <option name="name" value="Netflix Candidates" />
+      <option name="url" value="https://artifactory-oss.prod.netflix.net/artifactory/maven-oss-candidates" />
+    </remote-repository>
   </component>
 </project>

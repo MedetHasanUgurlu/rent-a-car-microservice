@@ -13,6 +13,6 @@ public interface ModelController {
     ResponseEntity<Void> add(ModelCreateRequest request);
     ResponseEntity<Void> update(UUID id, ModelUpdateRequest request);
     ResponseEntity<Void> delete(UUID id);
-    ResponseEntity<ModelGetResponse> get(UUID id);
+    ModelGetResponse get(UUID id);
     ResponseEntity<List<ModelGetAllResponse>> getAll();
 }

@@ -3,3 +3,9 @@ server:
 spring:
   application:
     name: rental-service
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
