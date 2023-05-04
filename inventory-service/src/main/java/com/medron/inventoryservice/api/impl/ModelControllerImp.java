@@ -53,4 +53,7 @@ public class ModelControllerImp implements ModelController {
     public ResponseEntity<List<ModelGetAllResponse>> getAll() {
         return new ResponseEntity<>(service.getAll(),HttpStatus.OK);
     }
+
+
+
 }
