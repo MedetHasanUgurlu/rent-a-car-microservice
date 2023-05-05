@@ -7,6 +7,7 @@ import com.medron.inventoryservice.business.dto.request.update.BrandUpdateReques
 import com.medron.inventoryservice.business.dto.response.get.BrandGetResponse;
 import com.medron.inventoryservice.business.dto.response.getall.BrandGetAllResponse;
 import com.medron.inventoryservice.constant.PathConstant;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,14 +26,14 @@ public class BrandControllerImp implements BrandController {
 
     @Override
     @PostMapping
-    public ResponseEntity<Void> add(@RequestBody BrandCreateRequest request) {
+    public ResponseEntity<Void> add(@RequestBody @Valid BrandCreateRequest request) {
         brandService.add(request);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @Override
     @PutMapping("/{id}")
-    public ResponseEntity<Void> update(@PathVariable UUID id, @RequestBody BrandUpdateRequest request) {
+    public ResponseEntity<Void> update(@PathVariable UUID id, @RequestBody @Valid BrandUpdateRequest request) {
         brandService.update(id,request);
         return new ResponseEntity<>(HttpStatus.OK);
     }

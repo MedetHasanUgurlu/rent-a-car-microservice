@@ -8,6 +8,7 @@ import com.medron.inventoryservice.business.dto.response.get.CarGetResponse;
 import com.medron.inventoryservice.business.dto.response.getall.CarGetAllResponse;
 import com.medron.inventoryservice.business.rule.CarBusinessRule;
 import com.medron.inventoryservice.entity.Car;
+import com.medron.inventoryservice.entity.enums.State;
 import com.medron.inventoryservice.repository.CarRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -37,6 +38,7 @@ public class CarServiceImp implements CarService {
     @Override
     public void add(CarCreateRequest request) {
         Car car = requestToEntity(request);
+        car.setState(State.Available);
         repository.save(car);
     }
 
