@@ -1,3 +1,3 @@
 # Rent a Car Microservice Project
 
-![img_1.png](img_1.png)
+![anime-eating.gif](..%2F..%2FDesktop%2Fanime-eating.gif)
