@@ -57,8 +57,6 @@ C
 common-package/mvnw,9\4\945a9ec487b87346dc711fa2615ccbf13f41bbe1
 G
 common-package/mvnw.cmd,5\c\5c434c0437c1ee49d16b34bef33f0f2d90c8f5b0
-F
-common-package/pom.xml,8\5\853891165e358496e1c485409dd8310245fb3856
 
 Oinventory-service/src/main/java/com/medron/inventoryservice/constant/Regex.java,d\f\df0eabd70e9a908a1efafac6b79f3c3d32cdb361
 ‡

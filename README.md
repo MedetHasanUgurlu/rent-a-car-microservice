@@ -1,3 +1,7 @@
 # Rent a Car Microservice Project
 
-![anime-eating.gif](images%2Fanime-eating.gif)
+
+
+<p align="center">
+  <img src="images/anime-eating.gif" alt="animated" />
+</p>
