@@ -18,5 +18,6 @@ public class ModelUpdateRequest implements ModelRequest {
     private String name;
     @NotNull(message = ValidationConstant.Model.BRAND_ID_NOT_NULL)
     private UUID brandId;
+
 }
 

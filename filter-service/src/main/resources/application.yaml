@@ -4,6 +4,14 @@ spring:
   application:
     name: filter-service
 
+  data:
+    mongodb:
+      database: filter-db
+      uri: mongodb://192.168.1.103:27017
+
+
+
+
 eureka:
   client:
     serviceUrl:
