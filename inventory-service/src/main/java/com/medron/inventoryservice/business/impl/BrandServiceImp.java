@@ -54,6 +54,7 @@ public class BrandServiceImp implements BrandService {
     @Override
     public void update(UUID id,BrandUpdateRequest request) {
         rules.checkEntityExist(id);
+        rules.checkNameExist(request.getName());
         Brand brand = requestToEntity(request);
         brand.setId(id);
         repository.save(brand);

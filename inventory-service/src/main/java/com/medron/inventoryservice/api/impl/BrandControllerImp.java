@@ -18,6 +18,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping(PathConstant.Brand.BasePath)
 public class BrandControllerImp implements BrandController {
     private final BrandService brandService;

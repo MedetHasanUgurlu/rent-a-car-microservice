@@ -35,7 +35,6 @@ public class FilterServiceImp implements FilterService {
 
     @Override
     public void add(Filter filter) {
-        filter.setId(UUID.randomUUID());
         repository.save(filter);
     }
 
