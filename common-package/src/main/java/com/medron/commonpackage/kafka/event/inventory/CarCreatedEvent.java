@@ -1,4 +1,4 @@
-package com.medron.commonpackage.kafka;
+package com.medron.commonpackage.kafka.event.inventory;
 
 import lombok.*;
 

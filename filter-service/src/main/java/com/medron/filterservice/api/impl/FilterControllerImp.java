@@ -9,10 +9,7 @@ import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -41,14 +38,17 @@ public class FilterControllerImp implements FilterController {
         return new ResponseEntity<>(service.getAll(),HttpStatus.OK);
     }
 
+
     @Override
-    public ResponseEntity<Void> delete(UUID id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable UUID id) {
         service.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<Void> deleteAllBrand(UUID brandId) {
+    @DeleteMapping
+    public ResponseEntity<Void> deleteAllBrand(@RequestParam UUID brandId) {
         service.deleteAllBrandId(brandId);
         return new ResponseEntity<>(HttpStatus.OK);
     }

@@ -1,6 +1,7 @@
 package com.medron.inventoryservice.business.impl;
 
-import com.medron.commonpackage.kafka.CarCreatedEvent;
+import com.medron.commonpackage.kafka.event.inventory.CarCreatedEvent;
+import com.medron.commonpackage.kafka.event.inventory.CarDeletedEvent;
 import com.medron.inventoryservice.business.CarService;
 import com.medron.inventoryservice.business.dto.abstracts.CarRequest;
 import com.medron.inventoryservice.business.dto.request.create.CarCreateRequest;
@@ -41,11 +42,13 @@ public class CarServiceImp implements CarService {
 
     @Override
     public void add(CarCreateRequest request) {
+
+        rules.checkPlateExist(request.getPlate());
         Car car = requestToEntity(request);
         car.setId(UUID.randomUUID());
         car.setState(State.Available);
-       Car carCreated = repository.save(car);
-       sendMongo(carCreated);
+        Car carCreated = repository.save(car);
+        sendKafkaCarCreated(carCreated);
     }
 
     @Override
@@ -71,9 +74,14 @@ public class CarServiceImp implements CarService {
     public void delete(UUID id) {
         rules.checkEntityExist(id);
         repository.deleteById(id);
+        sendKafkaCarDeleted(id);
     }
 
-    public void sendMongo(Car car){
+    public void sendKafkaCarCreated(Car car){
         producer.sendMessage(modelMapper.map(car,CarCreatedEvent.class));
     }
+    public void sendKafkaCarDeleted(UUID carId){
+        producer.sendMessage(new CarDeletedEvent(carId));
+    }
+
 }

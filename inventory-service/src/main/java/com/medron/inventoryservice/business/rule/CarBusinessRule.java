@@ -17,6 +17,11 @@ public class CarBusinessRule {
             throw new BusinessException(ExceptionConstant.Car.CAR_ENTITY_NOT_EXIST);
         }
     }
+    public void checkPlateExist(String plate){
+        if(repository.existsByPlateIsIgnoreCase(plate)){
+            throw new BusinessException(ExceptionConstant.Car.CAR_PLATE_EXIST);
+        }
+    }
 
 
 

@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 @Repository
 public interface FilterRepository extends MongoRepository<Filter, UUID> {
+    void deleteByCarId(UUID carId);
+    void deleteAllByBrandId(UUID brandId);
 
 }

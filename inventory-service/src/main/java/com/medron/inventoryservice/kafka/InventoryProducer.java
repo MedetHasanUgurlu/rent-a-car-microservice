@@ -1,10 +1,9 @@
 package com.medron.inventoryservice.kafka;
 
-import com.medron.commonpackage.kafka.CarCreatedEvent;
-import com.medron.inventoryservice.business.dto.abstracts.CarRequest;
+import com.medron.commonpackage.kafka.event.inventory.CarCreatedEvent;
+import com.medron.commonpackage.kafka.event.inventory.CarDeletedEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.Message;
@@ -18,12 +17,14 @@ public class InventoryProducer {
     private final KafkaTemplate<String,Object> kafkaTemplate;
 
     public void sendMessage(CarCreatedEvent carCreatedEvent){
-        Message message = MessageBuilder
-                .withPayload(carCreatedEvent)
-                .setHeader(KafkaHeaders.TOPIC,"topic-car-create")
-                .build();
+        Message message = MessageBuilder.withPayload(carCreatedEvent).setHeader(KafkaHeaders.TOPIC,"topic-car-create").build();
         kafkaTemplate.send(message);
         log.info(String.format("Car-created event sent=> %s",carCreatedEvent));
+    }
+    public void sendMessage(CarDeletedEvent event){
+        Message message = MessageBuilder.withPayload(event).setHeader(KafkaHeaders.TOPIC,"topic-car-delete").build();
+        kafkaTemplate.send(message);
+        log.info(String.format("[car-deleted-event]:%s",event.getCarId().toString()));
     }
 
 

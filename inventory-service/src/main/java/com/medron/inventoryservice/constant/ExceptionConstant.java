@@ -13,6 +13,7 @@ public class ExceptionConstant {
     public class Car{
         public static final String CAR_ENTITY_NOT_EXIST = "CAR_ENTITY_NOT_EXIST";
 
+        public static final String CAR_PLATE_EXIST = "CAR_PLATE_EXIST";
     }
 
 }
