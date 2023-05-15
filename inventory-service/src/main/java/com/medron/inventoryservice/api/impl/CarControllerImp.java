@@ -6,7 +6,7 @@ import com.medron.inventoryservice.business.dto.request.create.CarCreateRequest;
 import com.medron.inventoryservice.business.dto.request.update.CarUpdateRequest;
 import com.medron.inventoryservice.business.dto.response.get.CarGetResponse;
 import com.medron.inventoryservice.business.dto.response.getall.CarGetAllResponse;
-import com.medron.inventoryservice.constant.PathConstant;
+import com.medron.commonpackage.constant.PathConstant;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

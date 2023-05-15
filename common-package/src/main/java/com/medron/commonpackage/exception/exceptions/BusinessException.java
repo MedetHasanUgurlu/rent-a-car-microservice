@@ -1,4 +1,4 @@
-package com.medron.inventoryservice.exception.exceptions;
+package com.medron.commonpackage.exception.exceptions;
 
 import org.springframework.web.bind.annotation.ResponseStatus;
 

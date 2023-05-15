@@ -6,7 +6,7 @@ import com.medron.inventoryservice.business.dto.request.create.BrandCreateReques
 import com.medron.inventoryservice.business.dto.request.update.BrandUpdateRequest;
 import com.medron.inventoryservice.business.dto.response.get.BrandGetResponse;
 import com.medron.inventoryservice.business.dto.response.getall.BrandGetAllResponse;
-import com.medron.inventoryservice.constant.PathConstant;
+import com.medron.commonpackage.constant.PathConstant;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

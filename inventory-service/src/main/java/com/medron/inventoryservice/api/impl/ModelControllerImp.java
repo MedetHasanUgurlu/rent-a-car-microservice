@@ -6,7 +6,7 @@ import com.medron.inventoryservice.business.dto.request.create.ModelCreateReques
 import com.medron.inventoryservice.business.dto.request.update.ModelUpdateRequest;
 import com.medron.inventoryservice.business.dto.response.get.ModelGetResponse;
 import com.medron.inventoryservice.business.dto.response.getall.ModelGetAllResponse;
-import com.medron.inventoryservice.constant.PathConstant;
+import com.medron.commonpackage.constant.PathConstant;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

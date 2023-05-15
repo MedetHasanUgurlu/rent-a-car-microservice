@@ -13,7 +13,6 @@ public class ModelMapperConfig {
     ModelMapper modelMapper(){
         return new ModelMapper();
     }
-
     @Bean
     ModelMapperService modelMapperService() {
         return new ModelMapperServiceImp(modelMapper());

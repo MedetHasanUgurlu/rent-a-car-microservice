@@ -2,6 +2,7 @@ package com.medron.inventoryservice.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import java.util.List;
 import java.util.UUID;
@@ -19,8 +20,9 @@ public class Model {
     private UUID id;
     private String name;
     @ManyToOne
+    @Cascade(value = org.hibernate.annotations.CascadeType.DELETE)
     @JoinColumn(name = "brand_id")
     private Brand brand;
-    @OneToMany(mappedBy = "model",cascade = CascadeType.DETACH)
+    @OneToMany(mappedBy = "model",cascade = CascadeType.REMOVE)
     List<Car> cars;
 }

@@ -1,7 +1,7 @@
 package com.medron.inventoryservice.business.rule;
 
-import com.medron.inventoryservice.constant.ExceptionConstant;
-import com.medron.inventoryservice.exception.exceptions.BusinessException;
+import com.medron.commonpackage.constant.ExceptionConstant;
+import com.medron.commonpackage.exception.exceptions.BusinessException;
 import com.medron.inventoryservice.repository.ModelRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package com.medron.inventoryservice.business.dto.request.update;
 
 import com.medron.inventoryservice.business.dto.abstracts.ModelRequest;
-import com.medron.inventoryservice.constant.ValidationConstant;
+import com.medron.commonpackage.constant.ValidationConstant;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;

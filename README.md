@@ -3,5 +3,5 @@
 
 
 <p align="center">
-  <img src="images/anime-eating.gif" alt="animated" />
+  <img src="zimages/anime-eating.gif" alt="animated" />
 </p>

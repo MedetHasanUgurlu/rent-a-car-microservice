@@ -27,5 +27,10 @@ public class InventoryProducer {
         log.info(String.format("[car-deleted-event]:%s",event.getCarId().toString()));
     }
 
+    public void sendMessage(Object o,String topicName){
+        Message<Object> message = MessageBuilder.withPayload(o).setHeader(KafkaHeaders.TOPIC,topicName).build();
+        kafkaTemplate.send(message);
+    }
+
 
 }

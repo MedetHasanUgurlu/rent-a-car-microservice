@@ -1,4 +1,4 @@
-package com.medron.inventoryservice.constant;
+package com.medron.commonpackage.constant;
 
 public class PathConstant {
     public static class Brand{

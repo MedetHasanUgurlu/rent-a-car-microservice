@@ -2,6 +2,7 @@ package com.medron.inventoryservice.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import java.util.List;
 import java.util.UUID;
@@ -19,5 +20,6 @@ public class Brand {
     private UUID id;
     private String name;
     @OneToMany(mappedBy = "brand")
+    @Cascade(value = org.hibernate.annotations.CascadeType.DELETE)
     List<Model> models;
 }

@@ -1,24 +1,0 @@
-
-\
-java:S1118":Add a private constructor to hide the implicit public one.(÷ïÉ“ùÿÿÿÿ8éøÏíı0
-{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¡ŸÏôıÿÿÿÿ8È¶Ñíı0
-W
-java:S1118":Add a private constructor to hide the implicit public one.(ùÏŞŠ8Ú¶Ñíı0
-c
-java:S1075"ARefactor your code to get this URI from a customizable parameter.(¡ŸÏôıÿÿÿÿ8ëøÏíı0
-g
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(¡ŸÏôıÿÿÿÿ8å¶Ñíı0
-{	java:S115	"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¿Ãïÿÿÿÿÿ8£ŠÓíı0
-W
-java:S1118":Add a private constructor to hide the implicit public one.(Äš8£ŠÓíı0
-c
-java:S1075	"ARefactor your code to get this URI from a customizable parameter.(¿Ãïÿÿÿÿÿ8£ŠÓíı0
-g
-java:S1124	"EReorder the modifiers to comply with the Java Language Specification.(¿Ãïÿÿÿÿÿ8¤ŠÓíı0
-{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(·»–ÿÿÿÿÿ8¤ŠÓíı0
-\
-java:S1118":Add a private constructor to hide the implicit public one.(ôúÅ€ùÿÿÿÿ8¥ŠÓíı0
-c
-java:S1075"ARefactor your code to get this URI from a customizable parameter.(·»–ÿÿÿÿÿ8¥ŠÓíı0
-g
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(·»–ÿÿÿÿÿ8¥ŠÓíı0

@@ -1,4 +1,4 @@
-package com.medron.inventoryservice.exception;
+package com.medron.commonpackage.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,15 +9,16 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class ExceptionResult<T> {
-    private T message;
     private String type;
-    LocalDateTime localDateTime;
-    public ExceptionResult(T message,String type){
-        this.message = message;
+    private T message;
+    private LocalDateTime localDateTime;
+
+    public ExceptionResult(String type,T message){
         this.type = type;
-        localDateTime = LocalDateTime.now();
+        this.message = message;
     }
+
 }
