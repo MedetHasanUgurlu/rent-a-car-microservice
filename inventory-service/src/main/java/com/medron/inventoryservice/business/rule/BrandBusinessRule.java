@@ -1,5 +1,6 @@
 package com.medron.inventoryservice.business.rule;
 
+import com.medron.commonpackage.exception.exceptions.BusinessException;
 import com.medron.inventoryservice.repository.BrandRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,13 +14,12 @@ public class BrandBusinessRule {
 
     public void checkNameExist(String name){
         if (repository.existsByNameIgnoreCase(name)) {
-            throw new IllegalArgumentException("Brand name already used.");
+            throw new BusinessException("BrandName already exist");
         }
     }
     public void checkEntityExist(UUID id){
         if(!repository.existsById(id)){
-            throw new IllegalArgumentException("Entity not found.");
-
+            throw new BusinessException("Brand not found");
         }
     }
 }

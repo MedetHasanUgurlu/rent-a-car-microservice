@@ -17,12 +17,18 @@ public class InventoryProducer {
     private final KafkaTemplate<String,Object> kafkaTemplate;
 
     public void sendMessage(CarCreatedEvent carCreatedEvent){
-        Message message = MessageBuilder.withPayload(carCreatedEvent).setHeader(KafkaHeaders.TOPIC,"topic-car-create").build();
+        Message message = MessageBuilder
+                .withPayload(carCreatedEvent)
+                .setHeader(KafkaHeaders.TOPIC,"topic-car-create")
+                .build();
         kafkaTemplate.send(message);
         log.info(String.format("Car-created event sent=> %s",carCreatedEvent));
     }
     public void sendMessage(CarDeletedEvent event){
-        Message message = MessageBuilder.withPayload(event).setHeader(KafkaHeaders.TOPIC,"topic-car-delete").build();
+        Message message = MessageBuilder
+                .withPayload(event)
+                .setHeader(KafkaHeaders.TOPIC,"topic-car-delete")
+                .build();
         kafkaTemplate.send(message);
         log.info(String.format("[car-deleted-event]:%s",event.getCarId().toString()));
     }
