@@ -77,8 +77,6 @@ Zcommon-package/src/main/java/com/medron/commonpackage/utils/mapper/ModelMapperS
 Yinventory-service/src/main/java/com/medron/inventoryservice/config/ModelMapperConfig.java,f\3\f373e80fc83821933dafff0386a31fdadbde4e44
 ü
 oinventory-service/src/main/java/com/medron/inventoryservice/business/dto/request/update/BrandUpdateRequest.java,d\0\d0e00c54d0e4917fa4fe60cf551d9cafb3a984fc
-ù
-minventory-service/src/main/java/com/medron/inventoryservice/business/dto/request/update/CarUpdateRequest.java,b\3\b3ada206eb658f7702a0b7b1fbf72bee14116642
 H
 service-registry/pom.xml,c\8\c838103466e7455490125db06ce61e4ea301ce49
 ã
@@ -253,8 +251,6 @@ Q.idea/sonarlint/securityhotspotstore/c/9/c9b933d71b4fba54f44dffa60a3264f6961dc6
 Q.idea/sonarlint/securityhotspotstore/c/c/cc5c3b0629de18e16330a82a4d54bae4f8e4a76d,9\b\9bb3bea7886a93de16e0f219c73627829459996b
 â
 Yinventory-service/src/main/java/com/medron/inventoryservice/repository/CarRepository.java,8\9\89fab508b32cf6b11d32ac628b3865d9499eb031
-ê
-`common-package/src/main/java/com/medron/commonpackage/kafka/event/inventory/CarDeletedEvent.java,a\d\adf8de33b8aa3871851faf81caf298e2b3967159
 B
 docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
 Ñ
@@ -309,5 +305,3 @@ Srental-service/src/main/java/com/medron/rentalservice/RentalServiceApplication.
 Yservice-registry/src/main/java/com/medron/serviceregistry/ServiceRegistryApplication.java,1\0\106f3242fa400f1b83e8b37c10ba81e2dfd074a9
 å
 \inventory-service/src/main/java/com/medron/inventoryservice/InventoryServiceApplication.java,0\0\00c400fcc6050ba8825c43b281015a4378a5a31a
-à
-Xinventory-service/src/main/java/com/medron/inventoryservice/kafka/InventoryProducer.java,a\5\a5a0f1d1392959bb3aa80c499039e8901ddce91a

@@ -1,5 +1,6 @@
 package com.medron.commonpackage.kafka.event.inventory;
 
+
 import lombok.*;
 
 import java.util.UUID;
@@ -9,7 +10,13 @@ import java.util.UUID;
 @Setter
 @Builder
 @ToString
-public class CarDeletedEvent {
-    private UUID carId;
-}
+public class CarUpdatedEvent {
 
+    private UUID carId;
+    private UUID modelId;
+    private String plate;
+    private String state;
+    private int modelYear;
+
+
+}

@@ -58,4 +58,8 @@ public class FilterServiceImp implements FilterService {
     public void deleteAllModel(UUID modelId) {
         repository.deleteAllByModelId(modelId);
     }
+    @Override
+    public Filter findByCar(UUID carId){
+        return repository.findByCarId(carId).orElseThrow();
+    }
 }

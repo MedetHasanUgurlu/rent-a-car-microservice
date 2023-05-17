@@ -61,4 +61,5 @@ public class FilterControllerImp implements FilterController {
         service.deleteAllModel(modelId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
 }

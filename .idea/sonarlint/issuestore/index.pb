@@ -77,8 +77,6 @@ Ucommon-package/src/main/java/com/medron/commonpackage/utils/annotation/ValidYea
 ccommon-package/src/main/java/com/medron/commonpackage/utils/annotation/validator/YearValidator.java,b\6\b615f8292c403c92540692f626f277ddff2331d3
 ü
 oinventory-service/src/main/java/com/medron/inventoryservice/business/dto/request/update/BrandUpdateRequest.java,d\0\d0e00c54d0e4917fa4fe60cf551d9cafb3a984fc
-ù
-minventory-service/src/main/java/com/medron/inventoryservice/business/dto/request/update/CarUpdateRequest.java,b\3\b3ada206eb658f7702a0b7b1fbf72bee14116642
 H
 service-registry/pom.xml,c\8\c838103466e7455490125db06ce61e4ea301ce49
 ã
@@ -253,8 +251,6 @@ C
 api-gateway/pom.xml,2\b\2bfa2b108f2439e99e004f4085b58c22cf995f73
 â
 Yinventory-service/src/main/java/com/medron/inventoryservice/repository/CarRepository.java,8\9\89fab508b32cf6b11d32ac628b3865d9499eb031
-ê
-`common-package/src/main/java/com/medron/commonpackage/kafka/event/inventory/CarDeletedEvent.java,a\d\adf8de33b8aa3871851faf81caf298e2b3967159
 B
 docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
 å
@@ -307,7 +303,5 @@ I
 Srental-service/src/main/java/com/medron/rentalservice/RentalServiceApplication.java,f\0\f073f9931657a23b21eba35696be28608b748991
 â
 Yservice-registry/src/main/java/com/medron/serviceregistry/ServiceRegistryApplication.java,1\0\106f3242fa400f1b83e8b37c10ba81e2dfd074a9
-à
-Xinventory-service/src/main/java/com/medron/inventoryservice/kafka/InventoryProducer.java,a\5\a5a0f1d1392959bb3aa80c499039e8901ddce91a
 å
 \inventory-service/src/main/java/com/medron/inventoryservice/InventoryServiceApplication.java,0\0\00c400fcc6050ba8825c43b281015a4378a5a31a

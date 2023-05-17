@@ -2,6 +2,7 @@ package com.medron.inventoryservice.business.impl;
 
 import com.medron.commonpackage.kafka.event.inventory.CarCreatedEvent;
 import com.medron.commonpackage.kafka.event.inventory.CarDeletedEvent;
+import com.medron.commonpackage.kafka.event.inventory.CarUpdatedEvent;
 import com.medron.inventoryservice.business.CarService;
 import com.medron.inventoryservice.business.dto.abstracts.CarRequest;
 import com.medron.inventoryservice.business.dto.request.create.CarCreateRequest;
@@ -90,4 +91,9 @@ public class CarServiceImp implements CarService {
         producer.sendMessage(new CarDeletedEvent(carId));
     }
 
+    public void sendKafkaCarUpdated(Car car){
+        CarUpdatedEvent event = modelMapper.map(car,CarUpdatedEvent.class);
+        producer.sendMessage(event,"topic-car-create");
+
+    }
 }
