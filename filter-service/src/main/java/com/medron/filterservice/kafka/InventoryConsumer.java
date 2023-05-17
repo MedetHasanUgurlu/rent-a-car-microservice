@@ -1,8 +1,6 @@
 package com.medron.filterservice.kafka;
 
-import com.medron.commonpackage.kafka.event.inventory.CarCreatedEvent;
-import com.medron.commonpackage.kafka.event.inventory.CarDeletedEvent;
-import com.medron.commonpackage.kafka.event.inventory.CarUpdatedEvent;
+import com.medron.commonpackage.kafka.event.inventory.*;
 import com.medron.filterservice.business.FilterService;
 import com.medron.filterservice.entity.Filter;
 import lombok.RequiredArgsConstructor;
@@ -41,4 +39,14 @@ public class InventoryConsumer {
         filter.setModelId(event.getModelId());
         service.add(filter);
     }
+    @KafkaListener(topics ="topic-model-delete",groupId = "gpId-model-delete")
+    public void consume(ModelDeletedEvent event){
+        service.deleteAllModel(event.getModelId());
+    }
+    @KafkaListener(topics ="topic-brand-delete",groupId = "gpId-brand-delete")
+    public void consume(BrandDeletedEvent event){
+        service.deleteAllModel(event.getBrandId());
+    }
+
+
 }

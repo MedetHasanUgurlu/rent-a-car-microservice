@@ -1,5 +1,6 @@
 package com.medron.inventoryservice.business.impl;
 
+import com.medron.commonpackage.kafka.event.inventory.ModelDeletedEvent;
 import com.medron.inventoryservice.business.ModelService;
 import com.medron.inventoryservice.business.dto.abstracts.ModelRequest;
 import com.medron.inventoryservice.business.dto.request.create.ModelCreateRequest;
@@ -8,6 +9,7 @@ import com.medron.inventoryservice.business.dto.response.get.ModelGetResponse;
 import com.medron.inventoryservice.business.dto.response.getall.ModelGetAllResponse;
 import com.medron.inventoryservice.business.rule.ModelBusinessRule;
 import com.medron.inventoryservice.entity.Model;
+import com.medron.inventoryservice.kafka.InventoryProducer;
 import com.medron.inventoryservice.repository.ModelRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -22,6 +24,7 @@ public class ModelServiceImp implements ModelService {
     private final ModelRepository repository;
     private final ModelBusinessRule rules;
     private final ModelMapper mapper;
+    private final InventoryProducer producer;
 
     Model requestToEntity(ModelRequest request){
         return mapper.map(request,Model.class);
@@ -65,5 +68,9 @@ public class ModelServiceImp implements ModelService {
     public void delete(UUID id) {
         rules.checkEntityExist(id);
         repository.deleteById(id);
+        sendKafkaModelDeletedEvent(id);
+    }
+    public void sendKafkaModelDeletedEvent(UUID modelId){
+        producer.sendMessage(ModelDeletedEvent.builder().modelId(modelId).build(),"topic-model-delete");
     }
 }
