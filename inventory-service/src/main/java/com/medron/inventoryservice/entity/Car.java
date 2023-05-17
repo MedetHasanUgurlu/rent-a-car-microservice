@@ -26,6 +26,7 @@ public class Car {
     @Enumerated(EnumType.STRING)
     private State state;
     private int modelYear;
+    private double dailyPrice;
 
 
 

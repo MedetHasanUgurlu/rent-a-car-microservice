@@ -1,19 +1,15 @@
-package com.medron.filterservice.entity;
+package com.medron.filterservice.business.dto;
 
 import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.UUID;
 
-@Document
-@Setter
 @Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class Filter {
-    @Id
+public class FilterGetAllResponse {
     private String id;
     private UUID carId;
     private UUID modelId;

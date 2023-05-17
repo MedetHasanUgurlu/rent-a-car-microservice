@@ -78,7 +78,13 @@ public class CarServiceImp implements CarService {
     }
 
     public void sendKafkaCarCreated(Car car){
-        producer.sendMessage(modelMapper.map(car,CarCreatedEvent.class));
+        CarCreatedEvent event = modelMapper.map(car,CarCreatedEvent.class);
+        event.setId(UUID.randomUUID().toString());
+        event.setBrandName(car.getModel().getBrand().getName());
+        event.setBrandId(car.getModel().getBrand().getId());
+        event.setModelYear(car.getModelYear());
+        event.setDailyPrice(car.getDailyPrice());
+        producer.sendMessage(event);
     }
     public void sendKafkaCarDeleted(UUID carId){
         producer.sendMessage(new CarDeletedEvent(carId));

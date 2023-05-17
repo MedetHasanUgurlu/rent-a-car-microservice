@@ -11,6 +11,7 @@ import java.util.UUID;
 @Builder
 @ToString
 public class CarCreatedEvent {
+    private String id;
     private UUID carId;
     private UUID modelId;
     private UUID brandId;

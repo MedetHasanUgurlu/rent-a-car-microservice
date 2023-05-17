@@ -21,6 +21,10 @@ import java.util.UUID;
 public class CarControllerImp implements CarController {
     private final CarService service;
 
+    @GetMapping("/test")
+    public String test(){
+        return "test";
+    }
     @Override
     @PostMapping
     public ResponseEntity<Void> add(@RequestBody CarCreateRequest request) {
