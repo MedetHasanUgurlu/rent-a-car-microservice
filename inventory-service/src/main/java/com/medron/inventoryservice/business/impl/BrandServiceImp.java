@@ -12,12 +12,15 @@ import com.medron.inventoryservice.entity.Brand;
 import com.medron.inventoryservice.kafka.InventoryProducer;
 import com.medron.inventoryservice.repository.BrandRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Log4j2
 @Service
 @RequiredArgsConstructor
 public class BrandServiceImp implements BrandService {
@@ -72,6 +75,7 @@ public class BrandServiceImp implements BrandService {
 
 
     public void sendKafkaBrandDeleted(UUID brandId){
+        log.info("Brand:Id"+brandId.toString());
         producer.sendMessage(BrandDeletedEvent.builder().brandId(brandId).build(),"topic-brand-delete");
     }
 }

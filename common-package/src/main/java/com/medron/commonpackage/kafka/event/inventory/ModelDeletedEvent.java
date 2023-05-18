@@ -11,7 +11,7 @@ import java.util.UUID;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ModelDeletedEvent {
+public class ModelDeletedEvent implements BaseEvent{
     private UUID modelId;
 }
 

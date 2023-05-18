@@ -10,6 +10,6 @@ import java.util.UUID;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class BrandDeletedEvent {
+public class BrandDeletedEvent implements BaseEvent{
     private UUID brandId;
 }

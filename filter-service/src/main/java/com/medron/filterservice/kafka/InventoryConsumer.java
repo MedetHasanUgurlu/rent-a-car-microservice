@@ -45,7 +45,7 @@ public class InventoryConsumer {
     }
     @KafkaListener(topics ="topic-brand-delete",groupId = "gpId-brand-delete")
     public void consume(BrandDeletedEvent event){
-        service.deleteAllModel(event.getBrandId());
+        service.deleteAllBrand(event.getBrandId());
     }
 
 

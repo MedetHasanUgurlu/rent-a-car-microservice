@@ -9,7 +9,7 @@ import java.util.UUID;
 @Setter
 @Builder
 @ToString
-public class CarDeletedEvent {
+public class CarDeletedEvent implements BaseEvent{
     private UUID carId;
 }
 
