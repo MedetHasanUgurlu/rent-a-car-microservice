@@ -15,6 +15,8 @@ public class ExceptionConstant {
 
     }
     public static class Car{
+        public static final String CAR_NOT_AVAILABLE = "CAR_NOT_AVAILABLE";
+
         private Car(){}
         public static final String CAR_ENTITY_NOT_EXIST = "CAR_ENTITY_NOT_EXIST";
 

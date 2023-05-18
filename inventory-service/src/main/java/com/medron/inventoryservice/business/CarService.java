@@ -1,6 +1,7 @@
 package com.medron.inventoryservice.business;
 
 
+import com.medron.commonpackage.utils.dto.ClientResponse;
 import com.medron.inventoryservice.business.dto.request.create.CarCreateRequest;
 import com.medron.inventoryservice.business.dto.request.update.CarUpdateRequest;
 import com.medron.inventoryservice.business.dto.response.get.CarGetResponse;
@@ -15,4 +16,5 @@ public interface CarService {
     CarGetResponse get(UUID id);
     void update(UUID id, CarUpdateRequest request);
     void delete(UUID id);
+    ClientResponse checkCarAvailable(UUID id);
 }

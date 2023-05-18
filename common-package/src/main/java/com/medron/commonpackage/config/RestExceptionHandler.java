@@ -1,7 +1,8 @@
-package com.medron.commonpackage.exception.exceptions;
+package com.medron.commonpackage.config;
 
 import com.medron.commonpackage.constant.ExceptionType;
 import com.medron.commonpackage.exception.ExceptionResult;
+import com.medron.commonpackage.exception.exceptions.BusinessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;

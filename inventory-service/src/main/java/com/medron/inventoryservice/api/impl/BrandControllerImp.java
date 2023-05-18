@@ -6,7 +6,7 @@ import com.medron.inventoryservice.business.dto.request.create.BrandCreateReques
 import com.medron.inventoryservice.business.dto.request.update.BrandUpdateRequest;
 import com.medron.inventoryservice.business.dto.response.get.BrandGetResponse;
 import com.medron.inventoryservice.business.dto.response.getall.BrandGetAllResponse;
-import com.medron.commonpackage.constant.PathConstant;
+import com.medron.commonpackage.constant.URLPathConstant;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,7 +19,7 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping(PathConstant.Brand.BasePath)
+@RequestMapping(URLPathConstant.Brand.BasePath)
 public class BrandControllerImp implements BrandController {
     private final BrandService brandService;
 

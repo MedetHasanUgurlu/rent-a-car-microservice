@@ -1,8 +1,10 @@
 package com.medron.inventoryservice.business.impl;
 
+import com.medron.commonpackage.exception.exceptions.BusinessException;
 import com.medron.commonpackage.kafka.event.inventory.CarCreatedEvent;
 import com.medron.commonpackage.kafka.event.inventory.CarDeletedEvent;
 import com.medron.commonpackage.kafka.event.inventory.CarUpdatedEvent;
+import com.medron.commonpackage.utils.dto.ClientResponse;
 import com.medron.inventoryservice.business.CarService;
 import com.medron.inventoryservice.business.dto.abstracts.CarRequest;
 import com.medron.inventoryservice.business.dto.request.create.CarCreateRequest;
@@ -76,6 +78,20 @@ public class CarServiceImp implements CarService {
         rules.checkEntityExist(id);
         repository.deleteById(id);
         sendKafkaCarDeleted(id);
+    }
+
+    @Override
+    public ClientResponse checkCarAvailable(UUID id) {
+        ClientResponse response = new ClientResponse();
+        try {
+            rules.checkCarAvailable(id);
+            response.setSuccess(true);
+
+        }catch (BusinessException e){
+            response.setMessage(e.getMessage());
+            response.setSuccess(false);
+        }
+        return response;
     }
 
     public void sendKafkaCarCreated(Car car){

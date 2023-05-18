@@ -1,5 +1,6 @@
 package com.medron.inventoryservice.api;
 
+import com.medron.commonpackage.utils.dto.ClientResponse;
 import com.medron.inventoryservice.business.dto.request.create.CarCreateRequest;
 import com.medron.inventoryservice.business.dto.request.update.CarUpdateRequest;
 import com.medron.inventoryservice.business.dto.response.get.CarGetResponse;
@@ -15,4 +16,5 @@ public interface CarController {
     ResponseEntity<Void> delete(UUID id);
     ResponseEntity<CarGetResponse> get(UUID id);
     ResponseEntity<List<CarGetAllResponse>> getAll();
+    ResponseEntity<ClientResponse> checkCarAvailable(UUID id);
 }

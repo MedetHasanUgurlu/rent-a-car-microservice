@@ -1,12 +1,13 @@
 package com.medron.inventoryservice.api.impl;
 
+import com.medron.commonpackage.utils.dto.ClientResponse;
 import com.medron.inventoryservice.api.CarController;
 import com.medron.inventoryservice.business.CarService;
 import com.medron.inventoryservice.business.dto.request.create.CarCreateRequest;
 import com.medron.inventoryservice.business.dto.request.update.CarUpdateRequest;
 import com.medron.inventoryservice.business.dto.response.get.CarGetResponse;
 import com.medron.inventoryservice.business.dto.response.getall.CarGetAllResponse;
-import com.medron.commonpackage.constant.PathConstant;
+import com.medron.commonpackage.constant.URLPathConstant;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(PathConstant.Car.BasePath)
+@RequestMapping(URLPathConstant.Car.BasePath)
 public class CarControllerImp implements CarController {
     private final CarService service;
 
@@ -56,5 +57,11 @@ public class CarControllerImp implements CarController {
     @GetMapping
     public ResponseEntity<List<CarGetAllResponse>> getAll() {
         return new ResponseEntity<>(service.getAll(),HttpStatus.OK);
+    }
+
+    @Override
+    @GetMapping("/check-car-available/{id}")
+    public ResponseEntity<ClientResponse> checkCarAvailable(@PathVariable UUID id) {
+        return new ResponseEntity<>(service.checkCarAvailable(id),HttpStatus.OK);
     }
 }

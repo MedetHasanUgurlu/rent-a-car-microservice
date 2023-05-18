@@ -1,16 +1,17 @@
 package com.medron.commonpackage.constant;
 
 public class PathConstant {
-    public static class Brand{
-        public final static String BasePath = "/api/v1/brand";
+    public static final String ConfigurationBasePackage = "com.medron.commonpackage.config";
 
+    public static class Inventory {
+        public static final String ServiceBasePackage = "com.medron.inventoryservice";
     }
-    public static class Model{
-        public final static String BasePath = "/api/v1/model";
 
+    public static class Filter {
+        public static final String ServiceBasePackage = "com.medron.filterservice";
     }
-    public static class Car{
-        public final static String BasePath = "/api/v1/car";
 
+    public static class Rental {
+        public static final String ServiceBasePackage = "com.medron.rentalservice";
     }
 }
