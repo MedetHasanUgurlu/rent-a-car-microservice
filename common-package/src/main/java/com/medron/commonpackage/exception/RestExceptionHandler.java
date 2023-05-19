@@ -1,4 +1,4 @@
-package com.medron.commonpackage.config;
+package com.medron.commonpackage.exception;
 
 import com.medron.commonpackage.constant.ExceptionType;
 import com.medron.commonpackage.exception.ExceptionResult;

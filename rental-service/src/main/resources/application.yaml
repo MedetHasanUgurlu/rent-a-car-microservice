@@ -21,6 +21,28 @@ spring:
       bootstrap-servers: http://192.168.1.101:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+        alphanumeric-ids:
+          enabled: true
+resilience4j:
+  circuitbreaker:
+    instances:
+      CarClientcheckCarAvailable:
+        minimum-number-of-calls: 5
+  timelimiter:
+    instances:
+      CarClientcheckCarAvailable:
+        timeout-duration: 1s
+
+
+
+
+
+
+
 
 eureka:
   client:
@@ -31,3 +53,38 @@ eureka:
   instance:
     instance-id: ${spring.application.name}:${random.int}:${random.value}
     prefer-ip-address: true
+
+
+
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+
+
+
+# Circuit Breaker Configuration
+#resilience4j:
+#  circuitbreaker:
+#    instances:
+#      circuitBreakerTest:
+#        register-health-indicator: true
+#        failure-rate-threshold: 50
+#        minimum-number-of-calls: 5
+#        wait-duration-in-open-state: 5s
+#        permitted-number-of-calls-in-half-open-state: 3
+#        sliding-window-size: 10
+#        sliding-window-type: count_based
+## Retry Configuration
+#  retry:
+#    instances:
+#      springRetryTest:
+#        wait-duration: 15s
+#        max-attempts: 5

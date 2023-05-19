@@ -1,5 +1,6 @@
 package com.medron.rentalservice.business.service.imp;
 
+import com.medron.commonpackage.exception.exceptions.BusinessException;
 import com.medron.commonpackage.kafka.event.rental.RentalCreateEvent;
 import com.medron.commonpackage.kafka.producer.KafkaProducer;
 import com.medron.rentalservice.api.client.CarClient;
@@ -13,21 +14,23 @@ import com.medron.rentalservice.business.service.RentalService;
 import com.medron.rentalservice.entity.Rental;
 import com.medron.rentalservice.repository.RentalRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class RentalServiceImp implements RentalService {
     private final RentalRepository repository;
     private final RentalBusinessRule rule;
     private final ModelMapper mapper;
-    private final CarClient carClient;
     private final KafkaProducer producer;
+
 
     public Rental dtoToEntity(RentalRequest request){
         return mapper.map(request,Rental.class);
@@ -43,11 +46,12 @@ public class RentalServiceImp implements RentalService {
     @Override
     public void add(RentalCreateRequest request) {
         Rental rental = dtoToEntity(request);
-        carClient.checkCarAvailable(request.getCarId());
+        rule.checkCarAvailable(request.getCarId());
         rental.setId(null);
         rental.setRentedAt(LocalDate.now());
-        rental.setTotalPrice(calculateTotalPrice(request.getRentedForDays(), request.getDailyPrice()));
-        repository.save(dtoToEntity(request));
+        rental.setTotalPrice(request.getDailyPrice()*request.getRentedForDays());
+        repository.save(rental);
+        //sendKafkaRentalCreated(new RentalCreateEvent(request.getCarId()));
 
     }
 
@@ -76,11 +80,7 @@ public class RentalServiceImp implements RentalService {
         return entityToGetAllResponse(repository.findAll());
     }
 
-    private double calculateTotalPrice(int days,double dailyPrice){
-        return days*dailyPrice;
-    }
-
-    public void sendkafkaRentalCreated(RentalCreateEvent event){
+    public void sendKafkaRentalCreated(RentalCreateEvent event){
         producer.send(event,"rental-create-event");
     }
 
