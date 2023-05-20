@@ -15,6 +15,8 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class RentalBusinessRule {
     private final RentalRepository repository;
+
+    @Qualifier("com.medron.rentalservice.api.client.CarClient")
     private final CarClient carClient;
     public void checkEntityExist(UUID id){
         if (!repository.existsById(id)){

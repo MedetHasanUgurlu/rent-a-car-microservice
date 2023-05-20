@@ -16,6 +16,7 @@ import com.medron.inventoryservice.business.rule.CarBusinessRule;
 import com.medron.inventoryservice.entity.Car;
 import com.medron.inventoryservice.entity.enums.State;
 import com.medron.inventoryservice.repository.CarRepository;
+import io.github.resilience4j.retry.annotation.Retry;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -79,6 +80,7 @@ public class CarServiceImp implements CarService {
         repository.deleteById(id);
         sendKafkaCarDeleted(id);
     }
+
 
     @Override
     public ClientResponse checkCarAvailable(UUID id) {

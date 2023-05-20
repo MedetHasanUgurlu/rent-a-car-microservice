@@ -25,25 +25,8 @@ spring:
     openfeign:
       circuitbreaker:
         enabled: true
-        alphanumeric-ids:
-          enabled: true
-resilience4j:
-  circuitbreaker:
-    instances:
-      CarClientcheckCarAvailable:
-        minimum-number-of-calls: 5
-  timelimiter:
-    instances:
-      CarClientcheckCarAvailable:
-        timeout-duration: 1s
-
-
-
-
-
-
-
-
+#        alphanumeric-ids:
+#          enabled: true
 eureka:
   client:
     fetch-registry: true
@@ -53,8 +36,6 @@ eureka:
   instance:
     instance-id: ${spring.application.name}:${random.int}:${random.value}
     prefer-ip-address: true
-
-
 
 management:
   health:
@@ -68,7 +49,12 @@ management:
     health:
       show-details: always
 
-
+resilience4j:
+  retry:
+    instances:
+      inventory-service-retry:
+        max-attempts: 5
+        wait-duration: 10s
 
 # Circuit Breaker Configuration
 #resilience4j:
@@ -88,3 +74,14 @@ management:
 #      springRetryTest:
 #        wait-duration: 15s
 #        max-attempts: 5
+
+
+#resilience4j:
+#  circuitbreaker:
+#    instances:
+#      CarClientcheckCarAvailable:
+#        minimum-number-of-calls: 5
+#  timelimiter:
+#    instances:
+#      CarClientcheckCarAvailable:
+#        timeout-duration: 1s
