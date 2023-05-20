@@ -4,9 +4,9 @@ import com.medron.commonpackage.exception.exceptions.BusinessException;
 import com.medron.commonpackage.utils.dto.ClientResponse;
 import com.medron.maintenanceservice.api.client.CarClient;
 import com.medron.maintenanceservice.repository.MaintenanceRepository;
-import feign.Client;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -37,7 +37,6 @@ public class MaintenanceBusinessRule {
         if(!repository.existsByCarIdAndIsCompletedIsFalse(carId)){
             throw new BusinessException("OPERATION FAILED => CAR IS NOT EXIST OR IS ALREADY MAINTENANCE");
         }
-
     }
 
 

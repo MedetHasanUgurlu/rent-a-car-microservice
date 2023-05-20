@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class RentalConsumer {
     private final FilterService service;
-    private final ModelMapper mapper;
     @KafkaListener(topics = "topic-rental-create",groupId = "gpId-rental-create")
     public void consume(RentalCreateEvent event){
         Filter filter = service.findByCar(event.getCarId());

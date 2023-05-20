@@ -22,7 +22,7 @@ public class MaintenanceConsumer {
     }
     @KafkaListener(topics = "topic-maintenance-create",groupId = "gpId-maintenance-create")
     public void consume(MaintenanceCreatedEvent event){
-        service.changeStatus(event.getCarId(), State.Available);
+        service.changeStatus(event.getCarId(), State.Maintenance);
     }
     @KafkaListener(topics = "topic-maintenance-delete",groupId = "gpId-maintenance-delete")
     public void consume(MaintenanceDeletedEvent event){

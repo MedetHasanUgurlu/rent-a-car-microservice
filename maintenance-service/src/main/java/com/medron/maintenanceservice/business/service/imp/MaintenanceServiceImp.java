@@ -3,6 +3,7 @@ package com.medron.maintenanceservice.business.service.imp;
 import com.medron.commonpackage.kafka.event.maintenance.MaintenanceCreatedEvent;
 import com.medron.commonpackage.kafka.event.maintenance.MaintenanceDeletedEvent;
 import com.medron.commonpackage.kafka.event.maintenance.MaintenanceReturnedEvent;
+import com.medron.commonpackage.kafka.event.maintenance.MaintenanceUpdatedEvent;
 import com.medron.commonpackage.kafka.producer.KafkaProducer;
 import com.medron.maintenanceservice.business.dto.request.MaintenanceCreateRequest;
 import com.medron.maintenanceservice.business.dto.request.MaintenanceUpdateRequest;
@@ -57,7 +58,8 @@ public class MaintenanceServiceImp implements MaintenanceService {
         Maintenance maintenance = repository.findMaintenanceByCarIdAndIsCompletedFalse(carId);
         maintenance.setCompleted(true);
         maintenance.setPaid(true);
-        producer.send(new MaintenanceReturnedEvent(carId),"topic-maintenance-return");
+        repository.save(maintenance);
+        sendToKafkaMaintenanceReturn(carId);
        }
 
     @Override
@@ -70,7 +72,7 @@ public class MaintenanceServiceImp implements MaintenanceService {
         maintenance.setId(null);
         maintenance.setCarId(request.getCarId());
         repository.save(maintenance);
-        producer.send(new MaintenanceCreatedEvent(request.getCarId()),"topic-maintenance-create");
+        sendToKafkaMaintenanceCreate(request.getCarId());
     }
 
     @Override
@@ -81,6 +83,9 @@ public class MaintenanceServiceImp implements MaintenanceService {
         maintenance.setPaid(request.isPaid());
         maintenance.setCompleted(request.isCompleted());
         maintenance.setId(id);
+        if(request.isCompleted()){
+            sendToKafkaMaintenanceIsComplete(maintenance);
+        }
         repository.save(maintenance);
     }
 
@@ -88,7 +93,20 @@ public class MaintenanceServiceImp implements MaintenanceService {
     public void delete(UUID id) {
         UUID carId = repository.findById(id).orElseThrow().getCarId();
         repository.deleteById(id);
+        sendToKafkaMaintenanceDelete(carId);
+    }
+    private void sendToKafkaMaintenanceIsComplete(Maintenance maintenance){
+        producer.send(new MaintenanceUpdatedEvent(maintenance.getCarId()),"topic-maintenance-complete");
+    }
+    private void sendToKafkaMaintenanceDelete(UUID carId){
         producer.send(new MaintenanceDeletedEvent(carId),"topic-maintenance-delete");
+
+    }
+    private void sendToKafkaMaintenanceCreate(UUID carId){
+        producer.send(new MaintenanceCreatedEvent(carId),"topic-maintenance-create");
+    }
+    private void sendToKafkaMaintenanceReturn(UUID carId){
+        producer.send(new MaintenanceReturnedEvent(carId),"topic-maintenance-return");
     }
 
 

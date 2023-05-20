@@ -19,8 +19,6 @@ public class MaintenanceConsumer {
     public void consume(MaintenanceCreatedEvent event){
         Filter filter = service.findByCar(event.getCarId());
         filter.setState("Maintenance");
-        service.add(filter);
-        log.info("[MAINTENANCE-CREATED] ==> CAR-ID: "+event.getCarId().toString());
 
     }
     @KafkaListener(topics = "topic-maintenance-return",groupId = "gpId-maintenance-return")
@@ -28,7 +26,7 @@ public class MaintenanceConsumer {
         Filter filter = service.findByCar(event.getCarId());
         filter.setState("Available");
         service.add(filter);
-        log.info("[MAINTENANCE-CREATED] ==> CAR-ID: "+event.getCarId().toString());
+        log.info("[MAINTENANCE-RETURNED] ==> CAR-ID: "+event.getCarId().toString());
 
 
     }
@@ -37,8 +35,7 @@ public class MaintenanceConsumer {
         Filter filter = service.findByCar(event.getCarId());
         filter.setState("Available");
         service.add(filter);
-        log.info("[MAINTENANCE-CREATED] ==> CAR-ID: "+event.getCarId().toString());
-
+        log.info("[MAINTENANCE-DELETED] ==> CAR-ID: "+event.getCarId().toString());
 
     }
 

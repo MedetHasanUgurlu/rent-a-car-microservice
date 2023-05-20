@@ -27,7 +27,7 @@ public class CarBusinessRule {
 
     public void checkCarAvailable(UUID id){
         checkEntityExist(id);
-        if(repository.findById(id).get().getState() != State.Available){
+        if(repository.findById(id).orElseThrow().getState() != State.Available){
             throw new BusinessException(ExceptionConstant.Car.CAR_NOT_AVAILABLE);
         }
     }

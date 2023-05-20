@@ -99,7 +99,7 @@ public class CarServiceImp implements CarService {
 
     @Override
     public ClientResponseStatus showState(UUID id) {
-        //rules.checkEntityExist(id);
+        rules.checkEntityExist(id);
         return ClientResponseStatus.builder().state(repository.findById(id).get().getState().toString()).build();
     }
 

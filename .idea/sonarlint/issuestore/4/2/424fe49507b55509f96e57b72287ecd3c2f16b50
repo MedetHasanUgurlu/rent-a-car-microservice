@@ -12,3 +12,6 @@ java:S1118
 t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ìà÷öÿÿÿÿÿ
 P
 java:S1118":Add a private constructor to hide the implicit public one.(Í„³Î
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(€¾â¹8Á’ƒÅƒ1
+\
+java:S1118":Add a private constructor to hide the implicit public one.(Ñ…Óîÿÿÿÿÿ8†¾ùÄƒ1
