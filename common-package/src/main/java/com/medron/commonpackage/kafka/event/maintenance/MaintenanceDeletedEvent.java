@@ -1,4 +1,4 @@
-package com.medron.commonpackage.kafka.event.inventory;
+package com.medron.commonpackage.kafka.event.maintenance;
 
 import com.medron.commonpackage.kafka.event.BaseEvent;
 import lombok.*;
@@ -11,6 +11,6 @@ import java.util.UUID;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class BrandDeletedEvent implements BaseEvent {
-    private UUID brandId;
+public class MaintenanceDeletedEvent implements BaseEvent {
+    private UUID carId;
 }

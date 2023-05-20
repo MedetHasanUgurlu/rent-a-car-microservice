@@ -14,4 +14,7 @@ public class PathConstant {
     public static class Rental {
         public static final String ServiceBasePackage = "com.medron.rentalservice";
     }
+    public static class Maintenance {
+        public static final String ServiceBasePackage = "com.medron.maintenanceservice";
+    }
 }

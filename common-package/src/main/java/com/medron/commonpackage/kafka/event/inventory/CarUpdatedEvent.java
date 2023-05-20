@@ -1,6 +1,7 @@
 package com.medron.commonpackage.kafka.event.inventory;
 
 
+import com.medron.commonpackage.kafka.event.BaseEvent;
 import lombok.*;
 
 import java.util.UUID;
@@ -10,7 +11,7 @@ import java.util.UUID;
 @Setter
 @Builder
 @ToString
-public class CarUpdatedEvent implements BaseEvent{
+public class CarUpdatedEvent implements BaseEvent {
 
     private UUID carId;
     private UUID modelId;

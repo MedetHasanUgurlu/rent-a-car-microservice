@@ -16,7 +16,6 @@ import com.medron.rentalservice.repository.RentalRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -46,12 +45,12 @@ public class RentalServiceImp implements RentalService {
     @Override
     public void add(RentalCreateRequest request) {
         Rental rental = dtoToEntity(request);
-        rule.checkCarAvailable(request.getCarId());
+        //rule.checkCarAvailable(request.getCarId());
         rental.setId(null);
         rental.setRentedAt(LocalDate.now());
         rental.setTotalPrice(request.getDailyPrice()*request.getRentedForDays());
         repository.save(rental);
-        //sendKafkaRentalCreated(new RentalCreateEvent(request.getCarId()));
+        sendKafkaRentalCreated(new RentalCreateEvent(request.getCarId()));
 
     }
 
@@ -81,7 +80,7 @@ public class RentalServiceImp implements RentalService {
     }
 
     public void sendKafkaRentalCreated(RentalCreateEvent event){
-        producer.send(event,"rental-create-event");
+        producer.send(event,"topic-rental-create");
     }
 
 }

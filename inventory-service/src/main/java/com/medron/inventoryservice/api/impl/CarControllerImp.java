@@ -1,6 +1,7 @@
 package com.medron.inventoryservice.api.impl;
 
 import com.medron.commonpackage.utils.dto.ClientResponse;
+import com.medron.commonpackage.utils.dto.ClientResponseStatus;
 import com.medron.inventoryservice.api.CarController;
 import com.medron.inventoryservice.business.CarService;
 import com.medron.inventoryservice.business.dto.request.create.CarCreateRequest;
@@ -63,5 +64,11 @@ public class CarControllerImp implements CarController {
     @GetMapping("/check-car-available/{id}")
     public ResponseEntity<ClientResponse> checkCarAvailable(@PathVariable UUID id) {
         return new ResponseEntity<>(service.checkCarAvailable(id),HttpStatus.OK);
+    }
+
+    @Override
+    @GetMapping("/show-state/{id}")
+    public ResponseEntity<ClientResponseStatus> showState(@PathVariable UUID id) {
+        return new ResponseEntity<>(service.showState(id),HttpStatus.OK);
     }
 }
