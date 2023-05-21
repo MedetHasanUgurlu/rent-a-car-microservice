@@ -19,6 +19,8 @@ public class MaintenanceConsumer {
     public void consume(MaintenanceCreatedEvent event){
         Filter filter = service.findByCar(event.getCarId());
         filter.setState("Maintenance");
+        log.info("[MAINTENANCE-CREATED] ==> CAR-ID: "+event.getCarId().toString());
+        service.add(filter);
 
     }
     @KafkaListener(topics = "topic-maintenance-return",groupId = "gpId-maintenance-return")

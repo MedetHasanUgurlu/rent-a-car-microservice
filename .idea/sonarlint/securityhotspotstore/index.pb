@@ -746,11 +746,7 @@ Ofilter-service/src/main/java/com/medron/filterservice/kafka/RentalConsumer.java
 Ž
 ^inventory-service/src/main/java/com/medron/inventoryservice/business/rule/CarBusinessRule.java,5\b\5b1ec040829995d7592de568da17df0fb077ab86
 š
-jmaintenance-service/src/main/java/com/medron/maintenanceservice/business/rule/MaintenanceBusinessRule.java,5\4\54f061ad7e9929af412200bf0404d8668504cc01
-š
 jcommon-package/src/main/java/com/medron/commonpackage/kafka/event/maintenance/MaintenanceUpdatedEvent.java,9\0\90f6fc58d2b0022e13df67e118815e1ce20d4314
-‰
-Ymaintenance-service/src/main/java/com/medron/maintenanceservice/api/client/CarClient.java,6\b\6b6f6ee6f20de84f52fd3297dac32c9e32876f3c
 Œ
 \inventory-service/src/main/java/com/medron/inventoryservice/business/impl/CarServiceImp.java,9\9\99b23fc560f065b7590358e54dce0f5f67831739
 ‡
