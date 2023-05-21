@@ -15,4 +15,5 @@ public interface MaintenanceController {
     ResponseEntity<Void> update(UUID id, MaintenanceUpdateRequest request);
     ResponseEntity<MaintenanceGetResponse> get(UUID id);
     ResponseEntity<List<MaintenanceGetAllResponse>> getAll();
+    ResponseEntity<Void> returnMaintenance(UUID carId);
 }

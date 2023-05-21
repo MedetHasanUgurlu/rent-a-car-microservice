@@ -23,12 +23,13 @@ public class InventoryConsumer {
         service.add(mapper.map(event,Filter.class));
         log.info("Car created."+event.toString());
     }
-
+    /*
     @KafkaListener(topics = "topic-car-delete",groupId = "gpId-car-delete")
     public void consume(CarDeletedEvent event){
         service.deleteCar(event.getCarId());
         log.info("Car deleted."+"[CAR_ID]:"+event.getCarId());
     }
+
     @KafkaListener(topics = "topic-car-update",groupId = "gpId-car-update")
     public void consume(CarUpdatedEvent event){
         Filter filter = service.findByCar(event.getCarId());
@@ -48,5 +49,7 @@ public class InventoryConsumer {
         service.deleteAllBrand(event.getBrandId());
     }
 
+
+     */
 
 }

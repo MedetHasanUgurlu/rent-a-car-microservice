@@ -104,6 +104,7 @@ public class MaintenanceServiceImp implements MaintenanceService {
     }
     private void sendToKafkaMaintenanceCreate(UUID carId){
         producer.send(new MaintenanceCreatedEvent(carId),"topic-maintenance-create");
+
     }
     private void sendToKafkaMaintenanceReturn(UUID carId){
         producer.send(new MaintenanceReturnedEvent(carId),"topic-maintenance-return");

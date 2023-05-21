@@ -52,4 +52,11 @@ public class MaintenanceControllerImp implements MaintenanceController{
     public ResponseEntity<List<MaintenanceGetAllResponse>> getAll() {
         return new ResponseEntity<>(service.getAll(),HttpStatus.OK);
     }
+
+    @Override
+    @GetMapping("/return/{carId}")
+    public ResponseEntity<Void> returnMaintenance(@PathVariable UUID carId) {
+        service.returnCarFromMaintenance(carId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

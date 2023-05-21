@@ -18,7 +18,7 @@ spring:
 
   kafka:
     producer:
-      bootstrap-servers: http://192.168.1.101:9092
+      bootstrap-servers: http://192.168.1.100:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
   cloud:
