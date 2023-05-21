@@ -13,6 +13,7 @@
         <module name="api-gateway" />
         <module name="rental-service" />
         <module name="filter-service" />
+        <module name="maintenance-services" />
         <module name="service-registry" />
       </profile>
     </annotationProcessing>
@@ -24,6 +25,7 @@
       <module name="filter-service" options="-parameters" />
       <module name="inventory-service" options="-parameters" />
       <module name="maintenance-service" options="-parameters" />
+      <module name="maintenance-services" options="-parameters" />
       <module name="rental-service" options="-parameters" />
       <module name="service-registry" options="-parameters" />
     </option>
