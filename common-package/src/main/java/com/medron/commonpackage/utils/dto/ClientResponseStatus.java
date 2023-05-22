@@ -9,4 +9,5 @@ import lombok.*;
 @AllArgsConstructor
 public class ClientResponseStatus {
     private String state;
+    private String message;
 }

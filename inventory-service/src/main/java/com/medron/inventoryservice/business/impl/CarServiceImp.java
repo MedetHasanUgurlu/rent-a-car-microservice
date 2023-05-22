@@ -4,6 +4,8 @@ import com.medron.commonpackage.exception.exceptions.BusinessException;
 import com.medron.commonpackage.kafka.event.inventory.CarCreatedEvent;
 import com.medron.commonpackage.kafka.event.inventory.CarDeletedEvent;
 import com.medron.commonpackage.kafka.event.inventory.CarUpdatedEvent;
+import com.medron.commonpackage.kafka.event.inventory.StateChangeEvent;
+import com.medron.commonpackage.kafka.producer.KafkaProducer;
 import com.medron.commonpackage.utils.dto.ClientResponse;
 import com.medron.commonpackage.utils.dto.ClientResponseStatus;
 import com.medron.inventoryservice.business.CarService;
@@ -12,12 +14,10 @@ import com.medron.inventoryservice.business.dto.request.create.CarCreateRequest;
 import com.medron.inventoryservice.business.dto.request.update.CarUpdateRequest;
 import com.medron.inventoryservice.business.dto.response.get.CarGetResponse;
 import com.medron.inventoryservice.business.dto.response.getall.CarGetAllResponse;
-import com.medron.inventoryservice.kafka.InventoryProducer;
 import com.medron.inventoryservice.business.rule.CarBusinessRule;
 import com.medron.inventoryservice.entity.Car;
 import com.medron.inventoryservice.entity.enums.State;
 import com.medron.inventoryservice.repository.CarRepository;
-import io.github.resilience4j.retry.annotation.Retry;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -31,7 +31,7 @@ public class CarServiceImp implements CarService {
     private final CarRepository repository;
     private final CarBusinessRule rules;
     private final ModelMapper modelMapper;
-    private final InventoryProducer producer;
+    private final KafkaProducer producer;
 
     Car requestToEntity(CarRequest request){
         return modelMapper.map(request,Car.class);
@@ -43,11 +43,8 @@ public class CarServiceImp implements CarService {
         return modelMapper.map(car,CarGetAllResponse.class);
     }
 
-
-
     @Override
     public void add(CarCreateRequest request) {
-
         rules.checkPlateExist(request.getPlate());
         Car car = requestToEntity(request);
         car.setId(UUID.randomUUID());
@@ -73,6 +70,7 @@ public class CarServiceImp implements CarService {
         Car car = requestToEntity(request);
         car.setId(id);
         repository.save(car);
+        sendKafkaCarUpdated(car);
     }
 
     @Override
@@ -99,8 +97,14 @@ public class CarServiceImp implements CarService {
 
     @Override
     public ClientResponseStatus showState(UUID id) {
-        rules.checkEntityExist(id);
-        return ClientResponseStatus.builder().state(repository.findById(id).get().getState().toString()).build();
+        ClientResponseStatus responseStatus = new ClientResponseStatus();
+        try {
+            rules.checkEntityExist(id);
+            responseStatus.setState(repository.findById(id).get().getState().toString());
+        }catch (BusinessException e){
+            responseStatus.setMessage(e.getMessage());
+        }
+        return responseStatus;
     }
 
     @Override
@@ -109,6 +113,7 @@ public class CarServiceImp implements CarService {
         Car car = repository.findById(id).orElseThrow();
         car.setState(state);
         repository.save(car);
+        producer.send(new StateChangeEvent(id,state.toString()),"topic-car-state-change");
     }
 
     public void sendKafkaCarCreated(Car car){
@@ -118,15 +123,18 @@ public class CarServiceImp implements CarService {
         event.setBrandId(car.getModel().getBrand().getId());
         event.setModelYear(car.getModelYear());
         event.setDailyPrice(car.getDailyPrice());
-        producer.sendMessage(event);
+        producer.send(event,"topic-car-create");
     }
     public void sendKafkaCarDeleted(UUID carId){
-        producer.sendMessage(new CarDeletedEvent(carId));
+        producer.send(new CarDeletedEvent(carId),"topic-car-delete");
     }
 
     public void sendKafkaCarUpdated(Car car){
         CarUpdatedEvent event = modelMapper.map(car,CarUpdatedEvent.class);
-        producer.sendMessage(event,"topic-car-create");
+        producer.send(event,"topic-car-update");
 
     }
+
 }
+
+

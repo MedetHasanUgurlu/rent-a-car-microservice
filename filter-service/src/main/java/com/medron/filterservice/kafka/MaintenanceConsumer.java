@@ -3,7 +3,7 @@ package com.medron.filterservice.kafka;
 import com.medron.commonpackage.kafka.event.maintenance.MaintenanceCreatedEvent;
 import com.medron.commonpackage.kafka.event.maintenance.MaintenanceDeletedEvent;
 import com.medron.commonpackage.kafka.event.maintenance.MaintenanceReturnedEvent;
-import com.medron.commonpackage.kafka.event.rental.RentalCreateEvent;
+import com.medron.commonpackage.kafka.event.maintenance.MaintenanceUpdatedEvent;
 import com.medron.filterservice.business.FilterService;
 import com.medron.filterservice.entity.Filter;
 import lombok.RequiredArgsConstructor;
@@ -19,8 +19,10 @@ public class MaintenanceConsumer {
     public void consume(MaintenanceCreatedEvent event){
         Filter filter = service.findByCar(event.getCarId());
         filter.setState("Maintenance");
-        log.info("[MAINTENANCE-CREATED] ==> CAR-ID: "+event.getCarId().toString());
         service.add(filter);
+        log.info("<===== MAINTENANCE-CREATED =====>");
+        log.info("MAINTENANCE-INFO: "+event);
+
 
     }
     @KafkaListener(topics = "topic-maintenance-return",groupId = "gpId-maintenance-return")
@@ -28,7 +30,8 @@ public class MaintenanceConsumer {
         Filter filter = service.findByCar(event.getCarId());
         filter.setState("Available");
         service.add(filter);
-        log.info("[MAINTENANCE-RETURNED] ==> CAR-ID: "+event.getCarId().toString());
+        log.info("<===== MAINTENANCE-RETURNED =====>");
+        log.info("MAINTENANCE-INFO: "+event);
 
 
     }
@@ -37,8 +40,25 @@ public class MaintenanceConsumer {
         Filter filter = service.findByCar(event.getCarId());
         filter.setState("Available");
         service.add(filter);
-        log.info("[MAINTENANCE-DELETED] ==> CAR-ID: "+event.getCarId().toString());
+        log.info("<===== MAINTENANCE-DELETED =====>");
+        log.info("MAINTENANCE-INFO: "+event);
 
     }
+    @KafkaListener(topics = "topic-maintenance-complete",groupId = "gpId-maintenance-complete")
+    public void consume(MaintenanceUpdatedEvent event){
+        Filter filter = service.findByCar(event.getCarId());
+        filter.setState("Available");
+        service.add(filter);
+        log.info("<===== MAINTENANCE-COMPLETED =====>");
+        log.info("MAINTENANCE-INFO: "+event);
+
+    }
+
+        /*
+        topic-maintenance-create
+        topic-maintenance-delete
+        topic-maintenance-return
+        topic-maintenance-complete
+     */
 
 }

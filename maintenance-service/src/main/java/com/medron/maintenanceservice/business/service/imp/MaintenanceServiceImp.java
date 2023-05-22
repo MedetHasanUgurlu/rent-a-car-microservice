@@ -58,6 +58,7 @@ public class MaintenanceServiceImp implements MaintenanceService {
         Maintenance maintenance = repository.findMaintenanceByCarIdAndIsCompletedFalse(carId);
         maintenance.setCompleted(true);
         maintenance.setPaid(true);
+        maintenance.setExitDate(LocalDateTime.now());
         repository.save(maintenance);
         sendToKafkaMaintenanceReturn(carId);
        }
@@ -109,6 +110,14 @@ public class MaintenanceServiceImp implements MaintenanceService {
     private void sendToKafkaMaintenanceReturn(UUID carId){
         producer.send(new MaintenanceReturnedEvent(carId),"topic-maintenance-return");
     }
+
+
+    /*
+        topic-maintenance-create
+        topic-maintenance-delete
+        topic-maintenance-return
+        topic-maintenance-complete
+     */
 
 
 }

@@ -1,6 +1,7 @@
 package com.medron.inventoryservice.business.impl;
 
 import com.medron.commonpackage.kafka.event.inventory.BrandDeletedEvent;
+import com.medron.commonpackage.kafka.producer.KafkaProducer;
 import com.medron.inventoryservice.business.BrandService;
 import com.medron.inventoryservice.business.dto.abstracts.BrandRequest;
 import com.medron.inventoryservice.business.dto.request.create.BrandCreateRequest;
@@ -9,11 +10,9 @@ import com.medron.inventoryservice.business.dto.response.get.BrandGetResponse;
 import com.medron.inventoryservice.business.dto.response.getall.BrandGetAllResponse;
 import com.medron.inventoryservice.business.rule.BrandBusinessRule;
 import com.medron.inventoryservice.entity.Brand;
-import com.medron.inventoryservice.kafka.InventoryProducer;
 import com.medron.inventoryservice.repository.BrandRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +26,7 @@ public class BrandServiceImp implements BrandService {
     private final BrandRepository repository;
     private final BrandBusinessRule rules;
     private final ModelMapper modelMapper;
-    private final InventoryProducer producer;
+    private final KafkaProducer producer;
 
     Brand requestToEntity(BrandRequest request){
         return modelMapper.map(request,Brand.class);
@@ -75,7 +74,6 @@ public class BrandServiceImp implements BrandService {
 
 
     public void sendKafkaBrandDeleted(UUID brandId){
-        log.info("Brand:Id"+brandId.toString());
-        producer.sendMessage(BrandDeletedEvent.builder().brandId(brandId).build(),"topic-brand-delete");
+        producer.send(BrandDeletedEvent.builder().brandId(brandId).build(),"topic-brand-delete");
     }
 }

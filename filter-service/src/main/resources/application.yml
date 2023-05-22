@@ -5,12 +5,12 @@ spring:
   data:
     mongodb:
       database: filter-db
-      uri: mongodb://192.168.1.100:27017
+      uri: mongodb://192.168.1.101:27017
 
   kafka:
     consumer:
       auto-offset-reset: earliest
-      bootstrap-servers: http://192.168.1.100:9092
+      bootstrap-servers: http://192.168.1.101:9092
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       properties:
         spring:

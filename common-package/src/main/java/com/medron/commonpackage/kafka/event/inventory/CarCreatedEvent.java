@@ -5,13 +5,15 @@ import lombok.*;
 
 import java.util.UUID;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Getter
 @Setter
 @Builder
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class CarCreatedEvent implements BaseEvent {
+
     private String id;
     private UUID carId;
     private UUID modelId;

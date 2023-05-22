@@ -13,10 +13,12 @@
         <module name="api-gateway" />
         <module name="rental-service" />
         <module name="filter-service" />
-        <module name="maintenance-services" />
         <module name="service-registry" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="maintenance-services" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
