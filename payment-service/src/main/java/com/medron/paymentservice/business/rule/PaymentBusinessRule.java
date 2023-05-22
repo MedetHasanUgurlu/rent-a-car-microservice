@@ -21,7 +21,28 @@ public class PaymentBusinessRule {
     }
 
     public void checkCardInformation(Payment payment){
-        repository
+        if(!repository.existsByCardNumberAndCardHolderAndCardExpirationYearAndCardExpirationMonthAndCardCvv(
+                payment.getCardNumber(),
+                payment.getCardHolder(),
+                payment.getCardExpirationYear(),
+                payment.getCardExpirationMonth(),
+                payment.getCardCvv())){
+            throw new BusinessException("CAN NOT FOUND CARD INFORMATION");
+        }
     }
+
+    public void checkCardExist(String cardNumber){
+        if (repository.existsByCardNumber(cardNumber)){
+            throw new BusinessException("CARD_ALREADY_EXIST");
+        }
+    }
+
+    public void checkBalance(double balance,double price){
+        if(price>balance){
+            throw new BusinessException("PRICE > BALANCE");
+        }
+    }
+
+
 
 }
