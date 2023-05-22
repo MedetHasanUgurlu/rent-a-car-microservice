@@ -683,8 +683,6 @@ imaintenance-service/src/main/java/com/medron/maintenanceservice/api/controller/
 lmaintenance-service/src/main/java/com/medron/maintenanceservice/api/controller/MaintenanceControllerImp.java,1\1\112098395cbb57ce162800d8ef7d6111c4a65498
 ‰
 Ymaintenance-service/src/main/java/com/medron/maintenanceservice/api/client/CarClient.java,6\b\6b6f6ee6f20de84f52fd3297dac32c9e32876f3c
-F
-rental-service/pom.xml,0\6\06e97873a53154f053012ca49adabfa18fac0b87
 ‡
 Wmaintenance-service/src/main/java/com/medron/maintenanceservice/entity/Maintenance.java,8\e\8ee633582bc390705028188c986ba43541db1549
 Œ
