@@ -107,6 +107,8 @@ public class CarServiceImp implements CarService {
         return responseStatus;
     }
 
+
+
     @Override
     public void changeStatus(UUID id, State state) {
         rules.checkEntityExist(id);

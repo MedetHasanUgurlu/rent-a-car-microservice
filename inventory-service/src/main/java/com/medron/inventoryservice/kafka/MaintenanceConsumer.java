@@ -16,21 +16,22 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MaintenanceConsumer {
     private final CarService service;
-    @KafkaListener(topics = "topic-maintenance-return",groupId = "gpId-maintenance-return")
+    @KafkaListener(topics = "topic-maintenance-return",groupId = "gpId:inventory-service-maintenance-return")
     public void consume(MaintenanceReturnedEvent event){
         service.changeStatus(event.getCarId(), State.Available);
         log.info("<===== MAINTENANCE-RETURNED =====>");
         log.info("MAINTENANCE-INFO: "+event);
     }
-    @KafkaListener(topics = "topic-maintenance-create",groupId = "gpId-maintenance-create")
+    @KafkaListener(topics = "maintenance-create",groupId = "gpId:inventory-service-maintenance-create")
     public void consume(MaintenanceCreatedEvent event){
+        log.info("<===== MAINTENANCE-CREATED =====>");
         service.changeStatus(event.getCarId(), State.Maintenance);
         log.info("<===== MAINTENANCE-CREATED =====>");
         log.info("MAINTENANCE-INFO: "+event);
     }
-    @KafkaListener(topics = "topic-maintenance-delete",groupId = "gpId-maintenance-delete")
+    @KafkaListener(topics = "topic-maintenance-delete",groupId = "gpId:inventory-service-maintenance-delete")
     public void consume(MaintenanceDeletedEvent event){
-        service.changeStatus(event.getCarId(), State.Available);
+        service.changeStatus(event.getCarId(), State.Maintenance);
         log.info("<===== MAINTENANCE-DELETED =====>");
         log.info("MAINTENANCE-INFO: "+event);
     }

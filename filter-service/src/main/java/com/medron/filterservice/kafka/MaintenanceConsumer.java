@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MaintenanceConsumer {
     private final FilterService service;
-    @KafkaListener(topics = "topic-maintenance-create",groupId = "gpId-maintenance-create")
+    @KafkaListener(topics = "maintenance-create",groupId = "gpId-maintenance-create")
     public void consume(MaintenanceCreatedEvent event){
         Filter filter = service.findByCar(event.getCarId());
         filter.setState("Maintenance");

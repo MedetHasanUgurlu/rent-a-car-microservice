@@ -207,8 +207,6 @@ G.idea/sonarlint/issuestore/a/3/a351d58baafd42b2ac897ff9daf7fc7262174f73,8\e\8e
 Q.idea/sonarlint/securityhotspotstore/c/9/c9b933d71b4fba54f44dffa60a3264f6961dc6e2,5\1\51f0c0f35ed739474c1be5b5bcf1898dc03f8c11
 Å
 Q.idea/sonarlint/securityhotspotstore/c/c/cc5c3b0629de18e16330a82a4d54bae4f8e4a76d,9\b\9bb3bea7886a93de16e0f219c73627829459996b
-â
-Yinventory-service/src/main/java/com/medron/inventoryservice/repository/CarRepository.java,8\9\89fab508b32cf6b11d32ac628b3865d9499eb031
 B
 docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
 Å
@@ -745,5 +743,3 @@ rmaintenance-service/src/main/java/com/medron/maintenanceservice/business/dto/re
 Scommon-package/src/main/java/com/medron/commonpackage/config/ModelMapperConfig.java,c\6\c61c7cfb0c120eb247fae14de00a11ec9ec23335
 Ö
 Ucommon-package/src/main/java/com/medron/commonpackage/config/KafkaProducerConfig.java,0\f\0f1737a19b24a07f30e05130ffbdf238ee672b26
-í
-bmaintenance-service/src/main/java/com/medron/maintenanceservice/MaintenanceServiceApplication.java,7\c\7c59be36e660f1571c49d25b46720f8d62c4a75a

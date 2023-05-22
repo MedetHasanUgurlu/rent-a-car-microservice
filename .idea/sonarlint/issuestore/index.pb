@@ -207,8 +207,6 @@ D
 api-gateway/mvnw.cmd,4\e\4e78ccd1f7fc9cfe04c98f2b5dff3904ec2e9bd6
 C
 api-gateway/pom.xml,2\b\2bfa2b108f2439e99e004f4085b58c22cf995f73
-â
-Yinventory-service/src/main/java/com/medron/inventoryservice/repository/CarRepository.java,8\9\89fab508b32cf6b11d32ac628b3865d9499eb031
 B
 docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
 Å
@@ -745,5 +743,3 @@ rmaintenance-service/src/main/java/com/medron/maintenanceservice/business/dto/re
 Scommon-package/src/main/java/com/medron/commonpackage/config/ModelMapperConfig.java,c\6\c61c7cfb0c120eb247fae14de00a11ec9ec23335
 Ö
 Ucommon-package/src/main/java/com/medron/commonpackage/config/KafkaProducerConfig.java,0\f\0f1737a19b24a07f30e05130ffbdf238ee672b26
-í
-bmaintenance-service/src/main/java/com/medron/maintenanceservice/MaintenanceServiceApplication.java,7\c\7c59be36e660f1571c49d25b46720f8d62c4a75a
