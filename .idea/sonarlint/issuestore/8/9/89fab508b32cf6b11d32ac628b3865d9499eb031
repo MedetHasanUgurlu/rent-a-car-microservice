@@ -1,0 +1,9 @@
+
+f
+java:S1128"KRemove this unused import 'com.medron.inventoryservice.entity.enums.State'.(âûÉýÿÿÿÿ
+T
+java:S1128">Remove this unused import 'jakarta.transaction.Transactional'.(ß–Ê³
+i
+java:S1128"NRemove this unused import 'org.springframework.data.jpa.repository.Modifying'.(—·Ñ”þÿÿÿÿ
+e
+java:S1128	"JRemove this unused import 'org.springframework.data.jpa.repository.Query'.(Äºöïþÿÿÿÿ
