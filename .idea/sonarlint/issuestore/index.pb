@@ -733,8 +733,6 @@ Tinventory-service/src/main/java/com/medron/inventoryservice/business/CarService
 Vpayment-service/src/main/java/com/medron/paymentservice/PaymentServiceApplication.java,e\d\ed487fa720cbad873726f89b284edd47b39c8f6f
 G
 payment-service/pom.xml,2\5\25baee198b18cf264e9c0dcfc72630a226ed792c
-{
-Kpayment-service/src/main/java/com/medron/paymentservice/entity/Payment.java,6\3\63fd8891c1877689855f7e18e7a060c96d12c9fd
 ˜
 hpayment-service/src/main/java/com/medron/paymentservice/business/dto/response/PaymentGetAllResponse.java,2\1\21e2ca4a47d62d4c2e81393a780681568541b53c
 •
