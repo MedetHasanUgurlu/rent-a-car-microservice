@@ -2,7 +2,7 @@
 
 
 <h3 align="center">Project Structure</h3>
-<img src="../rent-a-car-microservice/zimages/img_2.png" />
+<img src="zimages/img_2.png" />
 
 
 <p align="center">
