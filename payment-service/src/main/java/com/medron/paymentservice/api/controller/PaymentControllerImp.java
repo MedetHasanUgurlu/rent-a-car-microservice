@@ -1,7 +1,8 @@
 package com.medron.paymentservice.api.controller;
 
+import com.medron.commonpackage.utils.dto.ClientResponse;
 import com.medron.paymentservice.business.dto.request.PaymentCreateRequest;
-import com.medron.paymentservice.business.dto.request.PaymentRentalRequest;
+import com.medron.commonpackage.utils.dto.PaymentRentalRequest;
 import com.medron.paymentservice.business.dto.request.PaymentUpdateRequest;
 import com.medron.paymentservice.business.dto.response.PaymentGetAllResponse;
 import com.medron.paymentservice.business.dto.response.PaymentGetResponse;
@@ -56,8 +57,7 @@ public class PaymentControllerImp implements PaymentController{
 
     @Override
     @PostMapping("/pay")
-    public ResponseEntity<Void> pay(@RequestBody PaymentRentalRequest request) {
-        service.pay(request);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<ClientResponse> pay(@RequestBody PaymentRentalRequest request) {
+        return new ResponseEntity<>(service.pay(request),HttpStatus.OK);
     }
 }

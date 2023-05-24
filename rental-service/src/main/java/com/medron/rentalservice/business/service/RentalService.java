@@ -14,4 +14,5 @@ public interface RentalService {
     void update(UUID id,RentalUpdateRequest request);
     RentalGetResponse get(UUID id);
     List<RentalGetAllResponse> getAll();
+    void returnFromRented(UUID id);
 }

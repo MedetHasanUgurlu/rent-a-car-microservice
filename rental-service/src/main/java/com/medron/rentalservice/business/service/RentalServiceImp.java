@@ -1,8 +1,11 @@
-package com.medron.rentalservice.business.service.imp;
+package com.medron.rentalservice.business.service;
 
 import com.medron.commonpackage.exception.exceptions.BusinessException;
 import com.medron.commonpackage.kafka.event.rental.RentalCreateEvent;
+import com.medron.commonpackage.kafka.event.rental.RentalDeleteEvent;
+import com.medron.commonpackage.kafka.event.rental.RentalReturnEvent;
 import com.medron.commonpackage.kafka.producer.KafkaProducer;
+import com.medron.commonpackage.utils.dto.PaymentRentalRequest;
 import com.medron.rentalservice.api.client.CarClient;
 import com.medron.rentalservice.business.dto.request.RentalCreateRequest;
 import com.medron.rentalservice.business.dto.request.RentalRequest;
@@ -45,7 +48,15 @@ public class RentalServiceImp implements RentalService {
     @Override
     public void add(RentalCreateRequest request) {
         Rental rental = dtoToEntity(request);
-        //rule.checkCarAvailable(request.getCarId());
+        rule.checkCarAvailable(request.getCarId());
+
+
+
+        PaymentRentalRequest rentalRequest = request.getPaymentRentalRequest();
+        rentalRequest.setPrice(request.getDailyPrice()*request.getRentedForDays());
+
+
+        rule.checkPayment(rentalRequest);
         rental.setId(null);
         rental.setRentedAt(LocalDate.now());
         rental.setTotalPrice(request.getDailyPrice()*request.getRentedForDays());
@@ -57,7 +68,9 @@ public class RentalServiceImp implements RentalService {
     @Override
     public void delete(UUID id) {
         rule.checkEntityExist(id);
+        sendKafkaRentalDeleted(new RentalDeleteEvent(repository.findById(id).orElseThrow().getCarId()));
         repository.deleteById(id);
+
     }
 
     @Override
@@ -79,8 +92,28 @@ public class RentalServiceImp implements RentalService {
         return entityToGetAllResponse(repository.findAll());
     }
 
+    @Override
+    public void returnFromRented(UUID id) {
+        rule.checkEntityExist(id);
+        sendKafkaRentalReturned(new RentalReturnEvent(repository.findById(id).orElseThrow().getCarId()));
+    }
+
     public void sendKafkaRentalCreated(RentalCreateEvent event){
         producer.send(event,"topic-rental-create");
     }
+    public void sendKafkaRentalDeleted(RentalDeleteEvent event){
+        producer.send(event,"topic-rental-delete");
+    }
+    public void sendKafkaRentalReturned(RentalReturnEvent event){
+        producer.send(event,"topic-rental-return");
+    }
+
+
+    /*
+
+    topic-rental-create
+    topic-rental-return
+    topic-rental-delete
+     */
 
 }

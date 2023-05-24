@@ -1,8 +1,10 @@
 package com.medron.paymentservice.business.service;
 
 
+import com.medron.commonpackage.exception.exceptions.BusinessException;
+import com.medron.commonpackage.utils.dto.ClientResponse;
 import com.medron.paymentservice.business.dto.request.PaymentCreateRequest;
-import com.medron.paymentservice.business.dto.request.PaymentRentalRequest;
+import com.medron.commonpackage.utils.dto.PaymentRentalRequest;
 import com.medron.paymentservice.business.dto.request.PaymentRequest;
 import com.medron.paymentservice.business.dto.request.PaymentUpdateRequest;
 import com.medron.paymentservice.business.dto.response.PaymentGetAllResponse;
@@ -27,12 +29,16 @@ public class PaymentServiceImp implements PaymentService{
     Payment requestToEntity(PaymentRequest request){
         return mapper.map(request,Payment.class);
     }
+    Payment rentalRequestToEntity(PaymentRentalRequest request){
+        return mapper.map(request,Payment.class);
+    }
     PaymentGetResponse entityPaymentGetResponse(Payment payment){
         return mapper.map(payment,PaymentGetResponse.class);
     }
     PaymentGetAllResponse entityToGetAllResponse(Payment payment){
         return mapper.map(payment,PaymentGetAllResponse.class);
     }
+
 
     @Override
     public void add(PaymentCreateRequest request) {
@@ -69,12 +75,22 @@ public class PaymentServiceImp implements PaymentService{
     }
 
     @Override
-    public void pay(PaymentRentalRequest request) {
-        rule.checkCardExist(request.getCardNumber());
-        Payment payment = repository.findByCardNumber(request.getCardNumber());
-        rule.checkCardInformation(requestToEntity(request));
-        rule.checkBalance(payment.getBalance(), request.getPrice());
-        payment.setBalance(payment.getBalance()- request.getPrice());
-        repository.save(payment);
+    public ClientResponse pay(PaymentRentalRequest request) {
+        ClientResponse response = new ClientResponse();
+
+        try{
+            rule.checkCardIsNotExist(request.getCardNumber());
+            Payment payment = repository.findByCardNumber(request.getCardNumber());
+            rule.checkCardInformation(rentalRequestToEntity(request));
+            rule.checkBalance(payment.getBalance(), request.getPrice());
+            payment.setBalance(payment.getBalance()- request.getPrice());
+            repository.save(payment);
+            response.setMessage("Success.");
+            response.setSuccess(true);
+        }catch (BusinessException e){
+            response.setMessage(e.getMessage());
+            response.setSuccess(false);
+        }
+        return response;
     }
 }

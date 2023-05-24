@@ -42,6 +42,11 @@ public class PaymentBusinessRule {
             throw new BusinessException("PRICE > BALANCE");
         }
     }
+    public void checkCardIsNotExist(String cardNumber){
+        if (!repository.existsByCardNumber(cardNumber)){
+            throw new BusinessException("CARD_NOT_EXIST");
+        }
+    }
 
 
 

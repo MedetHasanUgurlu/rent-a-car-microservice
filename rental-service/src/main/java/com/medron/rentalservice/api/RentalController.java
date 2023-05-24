@@ -15,5 +15,7 @@ public interface RentalController {
     ResponseEntity<List<RentalGetAllResponse>> getAll();
     ResponseEntity<Void> delete(UUID id);
     ResponseEntity<Void> update(UUID id, RentalUpdateRequest  request);
+    ResponseEntity<Void> returnFromRental(UUID id);
+
 
 }

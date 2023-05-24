@@ -1,7 +1,8 @@
 package com.medron.paymentservice.api.controller;
 
+import com.medron.commonpackage.utils.dto.ClientResponse;
 import com.medron.paymentservice.business.dto.request.PaymentCreateRequest;
-import com.medron.paymentservice.business.dto.request.PaymentRentalRequest;
+import com.medron.commonpackage.utils.dto.PaymentRentalRequest;
 import com.medron.paymentservice.business.dto.request.PaymentUpdateRequest;
 import com.medron.paymentservice.business.dto.response.PaymentGetAllResponse;
 import com.medron.paymentservice.business.dto.response.PaymentGetResponse;
@@ -16,5 +17,5 @@ public interface PaymentController {
     ResponseEntity<Void> delete(UUID id);
     ResponseEntity<List<PaymentGetAllResponse>> getAll();
     ResponseEntity<Void> update(UUID id, PaymentUpdateRequest request);
-    ResponseEntity<Void> pay(PaymentRentalRequest request);
+    ResponseEntity<ClientResponse> pay(PaymentRentalRequest request);
 }

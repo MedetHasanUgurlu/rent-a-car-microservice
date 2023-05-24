@@ -52,4 +52,11 @@ public class RentalControllerImp implements RentalController {
         service.update(id,request);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @Override
+    @PostMapping("/return/{id}")
+    public ResponseEntity<Void> returnFromRental(@PathVariable UUID id) {
+        service.returnFromRented(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

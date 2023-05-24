@@ -10,6 +10,6 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RentalDeleteEvent implements BaseEvent {
+public class RentalReturnEvent implements BaseEvent {
     private UUID carId;
 }

@@ -2,7 +2,9 @@ package com.medron.rentalservice.business.rule;
 
 import com.medron.commonpackage.exception.exceptions.BusinessException;
 import com.medron.commonpackage.utils.dto.ClientResponse;
+import com.medron.commonpackage.utils.dto.PaymentRentalRequest;
 import com.medron.rentalservice.api.client.CarClient;
+import com.medron.rentalservice.api.client.PaymentClient;
 import com.medron.rentalservice.repository.RentalRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +17,8 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class RentalBusinessRule {
     private final RentalRepository repository;
-
+    @Qualifier("com.medron.rentalservice.api.client.PaymentClient")
+    private final PaymentClient paymentClient;
     @Qualifier("com.medron.rentalservice.api.client.CarClient")
     private final CarClient carClient;
     public void checkEntityExist(UUID id){
@@ -31,5 +34,13 @@ public class RentalBusinessRule {
         }else{
             throw new BusinessException("CAR_NOT_AVAILABLE");
         }
+    }
+
+    public void checkPayment(PaymentRentalRequest request){
+        ClientResponse response = paymentClient.pay(request);
+        if(!response.isSuccess()){
+            throw new BusinessException("PAYMENT_FAILED");
+        }
+
     }
 }
