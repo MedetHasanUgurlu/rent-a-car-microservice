@@ -5,6 +5,8 @@
     <file url="file://$PROJECT_DIR$/api-gateway/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common-package/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common-package/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/config-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/config-server/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/filter-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/filter-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/inventory-service/src/main/java" charset="UTF-8" />
