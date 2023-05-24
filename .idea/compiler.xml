@@ -26,6 +26,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api-gateway" options="-parameters" />
       <module name="common-package" options="-parameters" />
+      <module name="config-server" options="-parameters" />
       <module name="filter-service" options="-parameters" />
       <module name="inventory-service" options="-parameters" />
       <module name="maintenance-service" options="-parameters" />
