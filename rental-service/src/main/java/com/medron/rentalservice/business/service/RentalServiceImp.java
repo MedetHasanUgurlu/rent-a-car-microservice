@@ -1,19 +1,16 @@
 package com.medron.rentalservice.business.service;
 
-import com.medron.commonpackage.exception.exceptions.BusinessException;
 import com.medron.commonpackage.kafka.event.rental.RentalCreateEvent;
 import com.medron.commonpackage.kafka.event.rental.RentalDeleteEvent;
 import com.medron.commonpackage.kafka.event.rental.RentalReturnEvent;
 import com.medron.commonpackage.kafka.producer.KafkaProducer;
 import com.medron.commonpackage.utils.dto.PaymentRentalRequest;
-import com.medron.rentalservice.api.client.CarClient;
 import com.medron.rentalservice.business.dto.request.RentalCreateRequest;
 import com.medron.rentalservice.business.dto.request.RentalRequest;
 import com.medron.rentalservice.business.dto.request.RentalUpdateRequest;
 import com.medron.rentalservice.business.dto.response.RentalGetAllResponse;
 import com.medron.rentalservice.business.dto.response.RentalGetResponse;
 import com.medron.rentalservice.business.rule.RentalBusinessRule;
-import com.medron.rentalservice.business.service.RentalService;
 import com.medron.rentalservice.entity.Rental;
 import com.medron.rentalservice.repository.RentalRepository;
 import lombok.RequiredArgsConstructor;
