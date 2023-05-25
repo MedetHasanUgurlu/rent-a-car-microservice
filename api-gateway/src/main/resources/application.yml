@@ -1,26 +1,34 @@
 spring:
   application:
     name: api-gateway
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
-          include-expression: true
+  config:
+    import: configserver:http://localhost:8888
 
-eureka:
-  client:
-    fetch-registry: true
-    register-with-eureka: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-  instance:
-    prefer-ip-address: true
-    instance-id: ${spring.application.name}:${random.int}:${random.value}
 
-server:
-  port: 9010
+
+#spring:
+#  application:
+#    name: api-gateway
+#  cloud:
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
+#          lower-case-service-id: true
+#          include-expression: true
+#
+#eureka:
+#  client:
+#    fetch-registry: true
+#    register-with-eureka: true
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
+#  instance:
+#    prefer-ip-address: true
+#    instance-id: ${spring.application.name}:${random.int}:${random.value}
+#
+#server:
+#  port: 9010
 
 
 

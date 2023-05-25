@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        default-label: master
+
+        git:
+          uri: https://github.com/kalayciburak-instruction/config-server-t2
+
+
+
+
+
+
+server:
+  port: 8888
+
+#    search-paths: '{profile}'
+#    profiles:
+#      active: git
