@@ -1,87 +1,98 @@
-server:
-  port: 0
 spring:
   application:
     name: rental-service
-  datasource:
-    username: postgres
-    password: 12345
-    url: jdbc:postgresql://localhost:5432/rental
-  jpa:
-    show-sql: true
-    open-in-view: false
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: create
-
-  kafka:
-    producer:
-      bootstrap-servers: http://192.168.1.102:9092
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
   cloud:
-    openfeign:
-      circuitbreaker:
-        enabled: true
-#        alphanumeric-ids:
-#          enabled: true
-eureka:
-  client:
-    fetch-registry: true
-    register-with-eureka: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-  instance:
-    instance-id: ${spring.application.name}:${random.int}:${random.value}
-    prefer-ip-address: true
+    config:
+      profile: dev
+  config:
+    import: configserver:http://localhost:8888
 
-management:
-  health:
-    circuitbreakers:
-      enabled: true
-  endpoints:
-    web:
-      exposure:
-        include: health
-  endpoint:
-    health:
-      show-details: always
 
-resilience4j:
-  retry:
-    instances:
-      inventory-service-retry:
-        max-attempts: 5
-        wait-duration: 10s
 
-# Circuit Breaker Configuration
+#server:
+#  port: 0
+#spring:
+#  application:
+#    name: rental-service
+#  datasource:
+#    username: postgres
+#    password: 12345
+#    url: jdbc:postgresql://localhost:5432/rental
+#  jpa:
+#    show-sql: true
+#    open-in-view: false
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
+#    hibernate:
+#      ddl-auto: create
+#
+#  kafka:
+#    producer:
+#      bootstrap-servers: http://192.168.1.102:9092
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#  cloud:
+#    openfeign:
+#      circuitbreaker:
+#        enabled: true
+##        alphanumeric-ids:
+##          enabled: true
+#eureka:
+#  client:
+#    fetch-registry: true
+#    register-with-eureka: true
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
+#  instance:
+#    instance-id: ${spring.application.name}:${random.int}:${random.value}
+#    prefer-ip-address: true
+#
+#management:
+#  health:
+#    circuitbreakers:
+#      enabled: true
+#  endpoints:
+#    web:
+#      exposure:
+#        include: health
+#  endpoint:
+#    health:
+#      show-details: always
+#
 #resilience4j:
-#  circuitbreaker:
-#    instances:
-#      circuitBreakerTest:
-#        register-health-indicator: true
-#        failure-rate-threshold: 50
-#        minimum-number-of-calls: 5
-#        wait-duration-in-open-state: 5s
-#        permitted-number-of-calls-in-half-open-state: 3
-#        sliding-window-size: 10
-#        sliding-window-type: count_based
-## Retry Configuration
 #  retry:
 #    instances:
-#      springRetryTest:
-#        wait-duration: 15s
+#      inventory-service-retry:
 #        max-attempts: 5
-
-
-#resilience4j:
-#  circuitbreaker:
-#    instances:
-#      CarClientcheckCarAvailable:
-#        minimum-number-of-calls: 5
-#  timelimiter:
-#    instances:
-#      CarClientcheckCarAvailable:
-#        timeout-duration: 1s
+#        wait-duration: 10s
+#
+## Circuit Breaker Configuration
+##resilience4j:
+##  circuitbreaker:
+##    instances:
+##      circuitBreakerTest:
+##        register-health-indicator: true
+##        failure-rate-threshold: 50
+##        minimum-number-of-calls: 5
+##        wait-duration-in-open-state: 5s
+##        permitted-number-of-calls-in-half-open-state: 3
+##        sliding-window-size: 10
+##        sliding-window-type: count_based
+### Retry Configuration
+##  retry:
+##    instances:
+##      springRetryTest:
+##        wait-duration: 15s
+##        max-attempts: 5
+#
+#
+##resilience4j:
+##  circuitbreaker:
+##    instances:
+##      CarClientcheckCarAvailable:
+##        minimum-number-of-calls: 5
+##  timelimiter:
+##    instances:
+##      CarClientcheckCarAvailable:
+##        timeout-duration: 1s

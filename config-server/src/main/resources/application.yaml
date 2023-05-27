@@ -4,19 +4,10 @@ spring:
   cloud:
     config:
       server:
-        default-label: master
-
+        default-label: main
         git:
-          uri: https://github.com/kalayciburak-instruction/config-server-t2
-
-
-
-
-
+          uri: https://github.com/MedetHasanUgurlu/rent-a-car-microservice-confighub
+          force-pull: true
 
 server:
   port: 8888
-
-#    search-paths: '{profile}'
-#    profiles:
-#      active: git
