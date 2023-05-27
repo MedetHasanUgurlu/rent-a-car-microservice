@@ -12,7 +12,6 @@
         <module name="maintenance-service" />
         <module name="payment-service" />
         <module name="common-package" />
-        <module name="invoice-service" />
         <module name="api-gateway" />
         <module name="rental-service" />
         <module name="filter-service" />
@@ -20,6 +19,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="invoice-service" target="17" />
       <module name="maintenance-services" target="17" />
     </bytecodeTargetLevel>
   </component>
