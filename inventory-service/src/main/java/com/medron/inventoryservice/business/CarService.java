@@ -1,6 +1,7 @@
 package com.medron.inventoryservice.business;
 
 
+import com.medron.commonpackage.utils.dto.ClientCarFeatureResponse;
 import com.medron.commonpackage.utils.dto.ClientResponse;
 import com.medron.commonpackage.utils.dto.ClientResponseStatus;
 import com.medron.inventoryservice.business.dto.request.create.CarCreateRequest;
@@ -21,4 +22,5 @@ public interface CarService {
     ClientResponse checkCarAvailable(UUID id);
     void changeStatus(UUID id, State state);
     ClientResponseStatus showState(UUID id);
+    ClientCarFeatureResponse getCarFeature(UUID carId);
 }

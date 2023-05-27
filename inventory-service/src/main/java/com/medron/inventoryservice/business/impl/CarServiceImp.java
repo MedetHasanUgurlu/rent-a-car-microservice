@@ -6,6 +6,7 @@ import com.medron.commonpackage.kafka.event.inventory.CarDeletedEvent;
 import com.medron.commonpackage.kafka.event.inventory.CarUpdatedEvent;
 import com.medron.commonpackage.kafka.event.inventory.StateChangeEvent;
 import com.medron.commonpackage.kafka.producer.KafkaProducer;
+import com.medron.commonpackage.utils.dto.ClientCarFeatureResponse;
 import com.medron.commonpackage.utils.dto.ClientResponse;
 import com.medron.commonpackage.utils.dto.ClientResponseStatus;
 import com.medron.inventoryservice.business.CarService;
@@ -107,6 +108,12 @@ public class CarServiceImp implements CarService {
         return responseStatus;
     }
 
+    @Override
+    public ClientCarFeatureResponse getCarFeature(UUID carId) {
+        rules.checkEntityExist(carId);
+        Car car = repository.findById(carId).orElseThrow();
+        return new ClientCarFeatureResponse(car.getModel().getName(),car.getModel().getBrand().getName(),car.getPlate(),car.getModelYear());
+    }
 
 
     @Override
