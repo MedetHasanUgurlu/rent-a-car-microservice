@@ -14,6 +14,7 @@
         <option value="$PROJECT_DIR$/maintenance-services/pom.xml" />
         <option value="$PROJECT_DIR$/payment-service/pom.xml" />
         <option value="$PROJECT_DIR$/config-server/pom.xml" />
+        <option value="$PROJECT_DIR$/invoice-service/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
