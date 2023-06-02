@@ -3593,10 +3593,6 @@ Ofilter-service/src/main/java/com/medron/filterservice/api/FilterController.java
 Vfilter-service/src/main/java/com/medron/filterservice/api/imp/FilterControllerImp.java,1\7\17db46632bbadee0b3442320642fcc13f6aa6627
 x
 Hfilter-service/src/main/java/com/medron/filterservice/entity/Filter.java,c\a\ca2c0b28f41964a57a5c125c3af9ec1d5308c0ec
-B
-docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
-F
-common-package/pom.xml,8\5\853891165e358496e1c485409dd8310245fb3856
 
 Orental-service/src/main/java/com/medron/rentalservice/api/client/CarClient.java,6\c\6c9493b1dcdfcbcc5ccc3052d7e31c11498f8f6b
 á
@@ -3643,3 +3639,5 @@ I
 gcommon-package/src/main/java/com/medron/commonpackage/kafka/event/invoice/InvoiceRentalCreateEvent.java,3\b\3b39fba8940ca9b3e321c20a53806beac1951895
 è
 _payment-service/src/main/java/com/medron/paymentservice/business/service/PaymentServiceImp.java,8\d\8de3e2c37cbc634daa9056300f150a8fc13e60af
+å
+\rental-service/src/main/java/com/medron/rentalservice/business/service/RentalServiceImp.java,2\5\25a56c0e3f6fe4b138bf082b559fb045b489818c
