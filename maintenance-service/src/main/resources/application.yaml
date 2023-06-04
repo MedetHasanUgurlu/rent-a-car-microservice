@@ -3,7 +3,7 @@ spring:
     name: maintenance-service
   cloud:
     config:
-      profile: dev
+      profile: prod
   config:
     import: configserver:http://localhost:8888
 
