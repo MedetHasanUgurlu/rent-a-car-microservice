@@ -19,8 +19,7 @@ public class Model {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
-    @ManyToOne
-    @Cascade(value = org.hibernate.annotations.CascadeType.DELETE)
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "brand_id")
     private Brand brand;
     @OneToMany(mappedBy = "model",cascade = CascadeType.REMOVE)

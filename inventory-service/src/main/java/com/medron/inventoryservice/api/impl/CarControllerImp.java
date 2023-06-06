@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(URLPathConstant.Car.BasePath)
@@ -44,7 +45,7 @@ public class CarControllerImp implements CarController {
 
     @Override
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable UUID id) {
+        public ResponseEntity<Void> delete(@PathVariable UUID id) {
         service.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

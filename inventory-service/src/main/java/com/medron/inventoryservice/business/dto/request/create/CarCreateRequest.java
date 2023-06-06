@@ -13,6 +13,9 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
+// Domain Driven Design
+// Hexagonal Design
+// InfraStructure
 public class CarCreateRequest implements CarRequest {
     @NotBlank
     private UUID modelId;
@@ -21,3 +24,4 @@ public class CarCreateRequest implements CarRequest {
     @ValidYear
     private int modelYear;
 }
+

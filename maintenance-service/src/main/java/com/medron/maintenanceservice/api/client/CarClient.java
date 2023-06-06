@@ -14,4 +14,14 @@ public interface CarClient {
     ClientResponse checkCarAvailable(@PathVariable UUID carId);
     @GetMapping(value = "/api/v1/car/show-state/{carId}")
     ClientResponseStatus getState(@PathVariable UUID carId);
+
+    // TODO: Neden mikroservis kullanırız?
+    // TODO: ****SOAP****, SOA
+    // TODO: Design Pattern, Refactoring Guru
+    // TODO: ****UnitTest****, JaCoCo(80-90)coverege, Mocking(I/O)
+    // TODO: YAZILIM MÜHENDİSLİĞİ
+
+
+    // TODO: Outsource nedir?
+    // TODO: Danışmanlık Modeli
 }

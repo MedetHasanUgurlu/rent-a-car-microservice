@@ -33,6 +33,7 @@ public class CarServiceImp implements CarService {
     private final CarBusinessRule rules;
     private final ModelMapper modelMapper;
     private final KafkaProducer producer;
+    // TODO: MapStructure
 
     Car requestToEntity(CarRequest request){
         return modelMapper.map(request,Car.class);
@@ -96,6 +97,7 @@ public class CarServiceImp implements CarService {
         return response;
     }
 
+
     @Override
     public ClientResponseStatus showState(UUID id) {
         ClientResponseStatus responseStatus = new ClientResponseStatus();
@@ -143,6 +145,8 @@ public class CarServiceImp implements CarService {
         producer.send(event,"topic-car-update");
 
     }
+
+
 
 }
 
