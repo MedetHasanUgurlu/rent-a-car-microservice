@@ -7,3 +7,8 @@ i
 java:S1128"NRemove this unused import 'org.springframework.data.jpa.repository.Modifying'.(—·Ñ”þÿÿÿÿ
 e
 java:S1128	"JRemove this unused import 'org.springframework.data.jpa.repository.Query'.(Äºöïþÿÿÿÿ
+q
+java:S1128
+"ORemove this unused import 'org.springframework.data.repository.CrudRepository'.(Îê¶¬üÿÿÿÿ8¼³Ääˆ1
+h
+java:S1128"FRemove this unused import 'org.springframework.stereotype.Repository'.(¦ýÍýüÿÿÿÿ8Ž”±äˆ1
