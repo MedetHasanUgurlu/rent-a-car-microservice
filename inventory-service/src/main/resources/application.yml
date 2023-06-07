@@ -8,6 +8,14 @@ spring:
     import: configserver:http://localhost:8888
 
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  tracing:
+    sampling:
+      probability: 1.0
 
 
 #spring:
