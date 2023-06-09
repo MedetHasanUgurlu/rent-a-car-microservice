@@ -3261,10 +3261,6 @@ I
 Pconfig-server/src/main/java/com/medron/configserver/ConfigServerApplication.java,3\c\3cfffcc6b6fd6d7fabbf697e3eb8b50c6d2c35f9
 G
 payment-service/pom.xml,2\5\25baee198b18cf264e9c0dcfc72630a226ed792c
-Ç
-Rinvoice-service/src/main/java/com/medron/invoiceservice/api/InvoiceController.java,4\7\4710bddb13aa105e64966687614a2349bd82bc54
-Ö
-Uinvoice-service/src/main/java/com/medron/invoiceservice/api/InvoiceControllerImp.java,7\9\79d234eeb9b5c14f78cb1a76819152cb97fc41e1
 F
 rental-service/pom.xml,0\6\06e97873a53154f053012ca49adabfa18fac0b87
 Ü
@@ -3289,8 +3285,6 @@ Vinventory-service/src/main/java/com/medron/inventoryservice/business/ModelServi
 oinventory-service/src/main/java/com/medron/inventoryservice/business/dto/request/create/BrandCreateRequest.java,a\b\ab2d82f49bbe4e263dcc2e89435b0fca62f2b19f
 é
 ^inventory-service/src/main/java/com/medron/inventoryservice/business/rule/CarBusinessRule.java,5\b\5b1ec040829995d7592de568da17df0fb077ab86
-ä
-Zinventory-service/src/main/java/com/medron/inventoryservice/api/impl/CarControllerImp.java,0\a\0afd6aebbe95aee97f662e6619efbfe94c390b28
 ù
 minventory-service/src/main/java/com/medron/inventoryservice/business/dto/request/create/CarCreateRequest.java,9\c\9c4e637525cd15eb5f38bbbda58c30369090da10
 â

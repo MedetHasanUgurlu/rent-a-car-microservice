@@ -13,6 +13,7 @@ import com.medron.commonpackage.constant.URLPathConstant;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -58,6 +59,7 @@ public class CarControllerImp implements CarController {
 
     @Override
     @GetMapping
+    @Secured("ROLE_admin")
     public ResponseEntity<List<CarGetAllResponse>> getAll() {
         return new ResponseEntity<>(service.getAll(),HttpStatus.OK);
     }
