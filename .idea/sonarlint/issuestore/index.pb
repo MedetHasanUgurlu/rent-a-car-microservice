@@ -175,8 +175,6 @@ Qcommon-package/src/main/java/com/medron/commonpackage/constant/ExceptionType.ja
 oinventory-service/src/main/java/com/medron/inventoryservice/business/dto/request/update/ModelUpdateRequest.java,6\6\667eb7d4f7a066129b813e4600dc17c4786e93d0
 J
 inventory-service/mvnw.cmd,3\0\30d3c86b8c24af8122d0750ab615f11d36c98e2f
-z
-Japi-gateway/src/main/java/org/medron/apigateway/ApiGatewayApplication.java,a\a\aaaf135f7bf5a1d5d18321c35a1904a3fc0c8a5f
 }
 Minventory-service/src/main/java/com/medron/inventoryservice/entity/Brand.java,3\5\35d4b740a72d7b249eafd56cfaefea98a517303c
 ‰
